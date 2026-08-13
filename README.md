@@ -77,17 +77,13 @@ Optional automatic generation can create a new combination every 30 seconds.
 
 Content changes use a small transition rather than heavy animation. Animations can also be disabled from Settings.
 
-### 📳 Haptic feedback
-
-Supported devices can provide a tiny vibration when actions are triggered.
-
 ### ⌨️ Keyboard shortcuts
 
 | Key | Action |
 |---|---|
 | `Space` | Generate a new combination |
 | `C` | Copy the current combination |
-| `Esc` | Close an open modal |
+
 
 ### ♿ Accessibility
 
@@ -128,7 +124,7 @@ daily-boost/
 │
 ├── index.html
 ├── README.md
-└── screenshot.png        # optional
+└── screenshot.png       
 ```
 
 The application currently lives in a single `index.html` file, which makes it very easy to host, edit, and experiment with.
