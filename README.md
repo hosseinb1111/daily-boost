@@ -77,6 +77,10 @@ Optional automatic generation can create a new combination every 30 seconds.
 
 Content changes use a small transition rather than heavy animation. Animations can also be disabled from Settings.
 
+### 📳 Haptic feedback
+
+Supported devices can provide a tiny vibration when actions are triggered.
+
 ### ⌨️ Keyboard shortcuts
 
 | Key | Action |
