@@ -8,7 +8,7 @@ No backend. No account. No API key. No build process.
 
 ## 🌐 Live Demo
 
-Replace this with your deployed website:
+
 
 **[Live Demo](https://hosseinb1111.github.io/daily-boost/)**
 
@@ -16,9 +16,9 @@ Replace this with your deployed website:
 
 
 
-```md
+
 ![Daily Boost Preview](./screenshot.png)
-```
+
 
 ---
 
