@@ -1,0 +1,3564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Daily Boost — a small place for a little positivity and something interesting to learn."
+  >
+
+  <meta
+    name="theme-color"
+    content="#f4efe6"
+  >
+
+  <title>Daily Boost</title>
+
+  <!-- =========================================================
+       CUSTOM FAVICON
+  ========================================================== -->
+
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23f4efe6'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23e28a2b'/%3E%3Cg stroke='%23b96518' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M32 8v7'/%3E%3Cpath d='M32 49v7'/%3E%3Cpath d='M8 32h7'/%3E%3Cpath d='M49 32h7'/%3E%3Cpath d='m15 15 5 5'/%3E%3Cpath d='m44 44 5 5'/%3E%3Cpath d='m49 15-5 5'/%3E%3Cpath d='m20 44-5 5'/%3E%3C/g%3E%3C/svg%3E"
+  >
+
+  <style>
+
+    /* =========================================================
+       RESET
+    ========================================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body,
+    button,
+    select {
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+
+      color: var(--text);
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--background),
+          var(--background-2)
+        );
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 28px;
+
+      transition:
+        background 0.35s ease,
+        color 0.35s ease;
+    }
+
+    button,
+    select {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* =========================================================
+       THEME SYSTEM
+    ========================================================== */
+
+    :root {
+      --background: #f5f1e8;
+      --background-2: #e9dfcf;
+
+      --paper: #fffdf8;
+
+      --text: #242321;
+      --secondary: #716b63;
+      --muted: #a29a90;
+
+      --line: #ded6ca;
+
+      --accent: #dc8427;
+      --accent-dark: #ac5d13;
+      --accent-light: #f7e5cd;
+
+      --fact-bg: #f7f2e9;
+
+      --shadow:
+        0 18px 50px rgba(58, 43, 26, 0.10);
+    }
+
+    /* Dark */
+
+    [data-theme="dark"] {
+      --background: #131313;
+      --background-2: #0b0b0b;
+
+      --paper: #181818;
+
+      --text: #f3f0ea;
+      --secondary: #aaa39a;
+      --muted: #777168;
+
+      --line: #30302e;
+
+      --accent: #e99b4b;
+      --accent-dark: #c77a2e;
+      --accent-light: #2b2117;
+
+      --fact-bg: #20201e;
+
+      --shadow:
+        0 22px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Desert */
+
+    [data-theme="desert"] {
+      --background: #e7c49d;
+      --background-2: #c68e62;
+
+      --paper: #fff7ec;
+
+      --text: #41291d;
+      --secondary: #765646;
+      --muted: #9f7760;
+
+      --line: #dec2a7;
+
+      --accent: #ba601d;
+      --accent-dark: #893e11;
+      --accent-light: #f5dfc5;
+
+      --fact-bg: #fbecdb;
+    }
+
+    /* Ocean */
+
+    [data-theme="ocean"] {
+      --background: #d8edf3;
+      --background-2: #9cc6d2;
+
+      --paper: #f8fdff;
+
+      --text: #19343f;
+      --secondary: #56727d;
+      --muted: #7f9aa3;
+
+      --line: #c8dde2;
+
+      --accent: #197a98;
+      --accent-dark: #14576b;
+      --accent-light: #dceff4;
+
+      --fact-bg: #edf8fb;
+    }
+
+    /* Forest */
+
+    [data-theme="forest"] {
+      --background: #dce8dc;
+      --background-2: #9cb59e;
+
+      --paper: #f9fdf8;
+
+      --text: #1d3120;
+      --secondary: #58705b;
+      --muted: #7d917f;
+
+      --line: #c7d5c8;
+
+      --accent: #417a47;
+      --accent-dark: #2b5a30;
+      --accent-light: #e0ecdf;
+
+      --fact-bg: #edf5ec;
+    }
+
+    /* Sunset */
+
+    [data-theme="sunset"] {
+      --background: #f0c7bc;
+      --background-2: #d99187;
+
+      --paper: #fff8f6;
+
+      --text: #432a2a;
+      --secondary: #76565a;
+      --muted: #9a767b;
+
+      --line: #e2c3bf;
+
+      --accent: #bd5362;
+      --accent-dark: #923c49;
+      --accent-light: #f4dde0;
+
+      --fact-bg: #fceeed;
+    }
+
+    /* Lavender */
+
+    [data-theme="lavender"] {
+      --background: #e1d8ed;
+      --background-2: #bba5d4;
+
+      --paper: #fcf9ff;
+
+      --text: #30273b;
+      --secondary: #685d70;
+      --muted: #8d8195;
+
+      --line: #d4c9df;
+
+      --accent: #7552a5;
+      --accent-dark: #593c82;
+      --accent-light: #eae2f2;
+
+      --fact-bg: #f5eff9;
+    }
+
+    /* AMOLED */
+
+    [data-theme="amoled"] {
+      --background: #000;
+      --background-2: #000;
+
+      --paper: #0b0b0b;
+
+      --text: #f0f0f0;
+      --secondary: #a1a1a1;
+      --muted: #686868;
+
+      --line: #212121;
+
+      --accent: #5ca9ff;
+      --accent-dark: #347fcf;
+      --accent-light: #111c28;
+
+      --fact-bg: #111;
+
+      --shadow:
+        0 22px 60px rgba(0, 0, 0, 0.70);
+    }
+
+    /* =========================================================
+       MAIN LAYOUT
+    ========================================================== */
+
+    .app {
+      width: min(760px, 100%);
+    }
+
+    .paper {
+      width: 100%;
+
+      background: var(--paper);
+
+      box-shadow: var(--shadow);
+
+      border-radius: 24px;
+
+      padding:
+        42px
+        44px
+        30px;
+
+      border:
+        1px solid
+        var(--line);
+
+      transition:
+        background 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    /* =========================================================
+       HEADER
+    ========================================================== */
+
+    header {
+      display: flex;
+
+      align-items: flex-start;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding-bottom: 25px;
+
+      border-bottom:
+        1px solid
+        var(--line);
+    }
+
+    .brand {
+      display: flex;
+
+      align-items: center;
+
+      gap: 13px;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 14px;
+
+      background:
+        var(--accent-light);
+
+      color:
+        var(--accent);
+
+      font-size: 22px;
+    }
+
+    .brand h1 {
+      font-size: 1.45rem;
+
+      font-weight: 750;
+
+      letter-spacing: -0.5px;
+    }
+
+    .brand p {
+      margin-top: 4px;
+
+      font-size: 0.86rem;
+
+      color:
+        var(--secondary);
+    }
+
+    .header-actions {
+      display: flex;
+
+      align-items: center;
+
+      gap: 6px;
+    }
+
+    .small-button {
+      width: 38px;
+      height: 38px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: transparent;
+
+      color:
+        var(--secondary);
+
+      cursor: pointer;
+
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .small-button:hover {
+      background:
+        var(--fact-bg);
+
+      color:
+        var(--text);
+    }
+
+    .small-button:active {
+      transform:
+        scale(0.92);
+    }
+
+    /* =========================================================
+       INTRO
+    ========================================================== */
+
+    .intro {
+      padding:
+        34px
+        0
+        24px;
+    }
+
+    .intro-label {
+      color:
+        var(--accent);
+
+      font-size: 0.72rem;
+
+      font-weight: 750;
+
+      text-transform: uppercase;
+
+      letter-spacing: 2.3px;
+
+      margin-bottom: 13px;
+    }
+
+    .intro h2 {
+      font-size:
+        clamp(
+          1.8rem,
+          4vw,
+          2.55rem
+        );
+
+      line-height: 1.18;
+
+      letter-spacing: -1.2px;
+
+      max-width: 620px;
+    }
+
+    .intro p {
+      color:
+        var(--secondary);
+
+      margin-top: 11px;
+
+      line-height: 1.65;
+
+      max-width: 570px;
+    }
+
+    /* =========================================================
+       FILTERS
+    ========================================================== */
+
+    .filters {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-bottom: 30px;
+    }
+
+    .filter {
+      border:
+        1px solid
+        var(--line);
+
+      color:
+        var(--secondary);
+
+      background:
+        transparent;
+
+      border-radius: 10px;
+
+      padding:
+        8px
+        13px;
+
+      cursor: pointer;
+
+      font-size: 0.82rem;
+
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .filter:hover {
+      color:
+        var(--text);
+
+      background:
+        var(--fact-bg);
+    }
+
+    .filter.active {
+      color:
+        var(--accent-dark);
+
+      background:
+        var(--accent-light);
+
+      border-color:
+        transparent;
+
+      font-weight:
+        700;
+    }
+
+    /* =========================================================
+       CONTENT
+    ========================================================== */
+
+    .content {
+      padding-top: 5px;
+
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .content.swap {
+      animation:
+        contentSwap 0.4s ease;
+    }
+
+    @keyframes contentSwap {
+
+      0% {
+        opacity: 0;
+        transform:
+          translateY(8px);
+      }
+
+      100% {
+        opacity: 1;
+        transform:
+          translateY(0);
+      }
+
+    }
+
+    .section-label {
+      color:
+        var(--muted);
+
+      font-size: 0.72rem;
+
+      text-transform:
+        uppercase;
+
+      letter-spacing:
+        1.8px;
+
+      margin-bottom:
+        11px;
+    }
+
+    .affirmation {
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+      font-size:
+        clamp(
+          1.65rem,
+          4vw,
+          2.35rem
+        );
+
+      line-height:
+        1.35;
+
+      letter-spacing:
+        -0.5px;
+
+      max-width:
+        650px;
+    }
+
+    .affirmation-category {
+      display:
+        inline-block;
+
+      margin-top:
+        16px;
+
+      font-size:
+        0.78rem;
+
+      color:
+        var(--accent-dark);
+    }
+
+    .rule {
+      height:
+        1px;
+
+      background:
+        var(--line);
+
+      margin:
+        30px 0;
+    }
+
+    .fact {
+      background:
+        var(--fact-bg);
+
+      border-left:
+        3px solid
+        var(--accent);
+
+      padding:
+        16px 18px;
+
+      color:
+        var(--secondary);
+
+      line-height:
+        1.68;
+
+      border-radius:
+        0 10px 10px 0;
+    }
+
+    .fact strong {
+      color:
+        var(--text);
+    }
+
+    /* =========================================================
+       ACTIONS
+    ========================================================== */
+
+    .actions {
+      display: flex;
+
+      align-items: center;
+
+      gap: 11px;
+
+      margin-top:
+        32px;
+
+      padding-top:
+        25px;
+
+      border-top:
+        1px solid
+        var(--line);
+    }
+
+    .primary {
+      flex: 1;
+
+      min-height:
+        47px;
+
+      border-radius:
+        11px;
+
+      background:
+        var(--accent);
+
+      color:
+        #fff;
+
+      padding:
+        0 18px;
+
+      font-weight:
+        700;
+
+      cursor:
+        pointer;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .primary:hover {
+      background:
+        var(--accent-dark);
+
+      transform:
+        translateY(-1px);
+    }
+
+    .secondary-button {
+      min-height:
+        47px;
+
+      border-radius:
+        11px;
+
+      padding:
+        0 17px;
+
+      color:
+        var(--text);
+
+      background:
+        transparent;
+
+      border:
+        1px solid
+        var(--line);
+
+      cursor:
+        pointer;
+
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .secondary-button:hover {
+      background:
+        var(--fact-bg);
+
+      border-color:
+        var(--accent);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================== */
+
+    footer {
+      display: flex;
+
+      align-items: center;
+
+      justify-content:
+        space-between;
+
+      gap: 15px;
+
+      margin-top:
+        20px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        0.76rem;
+    }
+
+    .footer-right {
+      text-align:
+        right;
+    }
+
+    kbd {
+      font-size:
+        0.68rem;
+
+      padding:
+        2px 6px;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius:
+        5px;
+
+      margin:
+        0 2px;
+    }
+
+    /* =========================================================
+       MODALS
+    ========================================================== */
+
+    .modal {
+      position:
+        fixed;
+
+      inset:
+        0;
+
+      z-index:
+        10;
+
+      background:
+        rgba(
+          0,
+          0,
+          0,
+          0.48
+        );
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      padding:
+        20px;
+
+      opacity:
+        0;
+
+      visibility:
+        hidden;
+
+      transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+    }
+
+    .modal.open {
+      opacity:
+        1;
+
+      visibility:
+        visible;
+    }
+
+    .modal-box {
+      width:
+        min(
+          560px,
+          100%
+        );
+
+      max-height:
+        85vh;
+
+      overflow-y:
+        auto;
+
+      background:
+        var(--paper);
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius:
+        20px;
+
+      padding:
+        26px;
+
+      box-shadow:
+        0 30px
+        80px
+        rgba(
+          0,
+          0,
+          0,
+          0.25
+        );
+
+      transform:
+        translateY(14px);
+
+      transition:
+        transform 0.2s ease;
+    }
+
+    .modal.open
+    .modal-box {
+      transform:
+        translateY(0);
+    }
+
+    .modal-header {
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      margin-bottom:
+        25px;
+    }
+
+    .modal-header h3 {
+      font-size:
+        1.15rem;
+    }
+
+    /* =========================================================
+       THEMES
+    ========================================================== */
+
+    .theme-list {
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(
+          4,
+          1fr
+        );
+
+      gap:
+        9px;
+    }
+
+    .theme {
+      padding:
+        14px
+        10px;
+
+      border-radius:
+        11px;
+
+      cursor:
+        pointer;
+
+      border:
+        1px solid
+        var(--line);
+
+      background:
+        var(--paper);
+
+      color:
+        var(--text);
+
+      font-size:
+        0.8rem;
+
+      transition:
+        border-color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .theme:hover {
+      transform:
+        translateY(-2px);
+    }
+
+    .theme.selected {
+      border:
+        2px solid
+        var(--accent);
+    }
+
+    .theme-color {
+      display:
+        block;
+
+      height:
+        25px;
+
+      border-radius:
+        7px;
+
+      margin-bottom:
+        7px;
+    }
+
+    .theme[data-theme-choice="light"]
+    .theme-color {
+      background:
+        linear-gradient(
+          135deg,
+          #f4efe6,
+          #d8872b
+        );
+    }
+
+    .theme[data-theme-choice="dark"]
+    .theme-color {
+      background:
+        linear-gradient(
+          135deg,
+          #171717,
+          #e99b4b
+        );
+    }
+
+    .theme[data-theme-choice="desert"]
+    .theme-color {
+      background:
+        linear-gradient(
+          135deg,
+          #e9c399,
+          #a75b28
+        );
+    }
+
+    .theme[data-theme-choice="ocean"]
+    .theme-color {
+      background:
+        linear-gradient(
+          135deg,
+          #d5edf3,
+          #197a98
+        );
+    }
+
+    .theme[data-theme-choice="forest"]
+    .theme-color {
+      background:
+        linear-gradient(
+          135deg,
+          #dce8dc,
+          #417a47
+        );
+    }
+
+    .theme[data-theme-choice="sunset"]
+    .theme-color {
+      background:
+        linear-gradient(
+          135deg,
+          #efc4ba,
+          #bd5362
+        );
+    }
+
+    .theme[data-theme-choice="lavender"]
+    .theme-color {
+      background:
+        linear-gradient(
+          135deg,
+          #e2d9ee,
+          #7552a5
+        );
+    }
+
+    .theme[data-theme-choice="amoled"]
+    .theme-color {
+      background:
+        linear-gradient(
+          135deg,
+          #000,
+          #5ca9ff
+        );
+    }
+
+    /* =========================================================
+       SETTINGS
+    ========================================================== */
+
+    .setting {
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      padding:
+        16px 0;
+
+      border-top:
+        1px solid
+        var(--line);
+    }
+
+    .setting:first-of-type {
+      margin-top:
+        24px;
+    }
+
+    .setting-title {
+      font-weight:
+        650;
+    }
+
+    .setting-description {
+      margin-top:
+        4px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        0.76rem;
+    }
+
+    .switch {
+      position:
+        relative;
+
+      width:
+        43px;
+
+      height:
+        24px;
+    }
+
+    .switch input {
+      display:
+        none;
+    }
+
+    .slider {
+      position:
+        absolute;
+
+      inset:
+        0;
+
+      background:
+        var(--line);
+
+      border-radius:
+        999px;
+
+      cursor:
+        pointer;
+
+      transition:
+        background 0.2s ease;
+    }
+
+    .slider::before {
+      content:
+        "";
+
+      position:
+        absolute;
+
+      width:
+        18px;
+
+      height:
+        18px;
+
+      top:
+        3px;
+
+      left:
+        3px;
+
+      background:
+        var(--paper);
+
+      border-radius:
+        50%;
+
+      box-shadow:
+        0 1px 4px
+        rgba(
+          0,
+          0,
+          0,
+          0.18
+        );
+
+      transition:
+        transform 0.2s ease;
+    }
+
+    .switch
+    input:checked
+    + .slider {
+      background:
+        var(--accent);
+    }
+
+    .switch
+    input:checked
+    + .slider::before {
+      transform:
+        translateX(19px);
+    }
+
+    /* =========================================================
+       HISTORY
+    ========================================================== */
+
+    .history {
+      display:
+        grid;
+
+      gap:
+        10px;
+    }
+
+    .history-item {
+      padding:
+        14px 15px;
+
+      background:
+        var(--fact-bg);
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius:
+        11px;
+
+      text-align:
+        left;
+
+      cursor:
+        pointer;
+
+      color:
+        var(--text);
+
+      width:
+        100%;
+
+      transition:
+        border-color 0.2s ease;
+    }
+
+    .history-item:hover {
+      border-color:
+        var(--accent);
+    }
+
+    .history-item strong {
+      display:
+        block;
+
+      font-family:
+        Georgia,
+        serif;
+
+      font-size:
+        0.97rem;
+
+      line-height:
+        1.45;
+    }
+
+    .history-item span {
+      display:
+        block;
+
+      margin-top:
+        7px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        0.76rem;
+
+      line-height:
+        1.5;
+    }
+
+    .empty {
+      text-align:
+        center;
+
+      color:
+        var(--muted);
+
+      padding:
+        30px 5px;
+    }
+
+    /* =========================================================
+       TOAST
+    ========================================================== */
+
+    .toast {
+      position:
+        fixed;
+
+      left:
+        50%;
+
+      bottom:
+        25px;
+
+      transform:
+        translate(
+          -50%,
+          12px
+        );
+
+      background:
+        var(--text);
+
+      color:
+        var(--paper);
+
+      padding:
+        10px 15px;
+
+      border-radius:
+        9px;
+
+      font-size:
+        0.8rem;
+
+      opacity:
+        0;
+
+      pointer-events:
+        none;
+
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+
+      z-index:
+        20;
+    }
+
+    .toast.visible {
+      opacity:
+        1;
+
+      transform:
+        translate(
+          -50%,
+          0
+        );
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================== */
+
+    @media (max-width: 650px) {
+
+      body {
+        padding:
+          12px;
+      }
+
+      .paper {
+        padding:
+          25px
+          21px
+          22px;
+
+        border-radius:
+          18px;
+      }
+
+      header {
+        flex-direction:
+          column;
+      }
+
+      .header-actions {
+        align-self:
+          flex-end;
+      }
+
+      .intro {
+        padding-top:
+          28px;
+      }
+
+      .actions {
+        flex-wrap:
+          wrap;
+      }
+
+      .primary {
+        min-width:
+          100%;
+      }
+
+      footer {
+        flex-direction:
+          column;
+
+        align-items:
+          flex-start;
+      }
+
+      .footer-right {
+        text-align:
+          left;
+      }
+
+      .theme-list {
+        grid-template-columns:
+          repeat(
+            2,
+            1fr
+          );
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior:
+          auto !important;
+
+        animation-duration:
+          0.01ms !important;
+
+        animation-iteration-count:
+          1 !important;
+
+        transition-duration:
+          0.01ms !important;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <main class="app">
+
+    <section class="paper">
+
+      <!-- =====================================================
+           HEADER
+      ====================================================== -->
+
+      <header>
+
+        <div class="brand">
+
+          <div class="logo">
+            ✦
+          </div>
+
+          <div>
+
+            <h1>
+              Daily Boost
+            </h1>
+
+            <p>
+              A little something good for today.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="header-actions">
+
+          <button
+            class="small-button"
+            id="historyBtn"
+            title="History"
+            aria-label="Open history"
+          >
+            ↺
+          </button>
+
+          <button
+            class="small-button"
+            id="settingsBtn"
+            title="Settings"
+            aria-label="Open settings"
+          >
+            ⚙
+          </button>
+
+        </div>
+
+      </header>
+
+
+      <!-- =====================================================
+           INTRO
+      ====================================================== -->
+
+      <div class="intro">
+
+        <div class="intro-label">
+          today's little reminder
+        </div>
+
+        <h2>
+          You don't need a perfect day
+          to have a good one.
+        </h2>
+
+        <p>
+          Take a second. Read something nice.
+          Learn something weird. Then get back to your day.
+        </p>
+
+      </div>
+
+
+      <!-- =====================================================
+           FILTERS
+      ====================================================== -->
+
+      <div class="filters">
+
+        <button
+          class="filter active"
+          data-category="all"
+        >
+          All
+        </button>
+
+        <button
+          class="filter"
+          data-category="confidence"
+        >
+          Confidence
+        </button>
+
+        <button
+          class="filter"
+          data-category="growth"
+        >
+          Growth
+        </button>
+
+        <button
+          class="filter"
+          data-category="calm"
+        >
+          Calm
+        </button>
+
+        <button
+          class="filter"
+          data-category="motivation"
+        >
+          Motivation
+        </button>
+
+        <button
+          class="filter"
+          data-category="self-love"
+        >
+          Self love
+        </button>
+
+      </div>
+
+
+      <!-- =====================================================
+           CONTENT
+      ====================================================== -->
+
+      <div
+        class="content"
+        id="content"
+      >
+
+        <div class="section-label">
+          affirmation
+        </div>
+
+        <div
+          class="affirmation"
+          id="affirmation"
+          aria-live="polite"
+        >
+          You are capable of amazing things.
+        </div>
+
+        <div
+          class="affirmation-category"
+          id="affirmationCategory"
+        >
+          confidence
+        </div>
+
+        <div class="rule"></div>
+
+        <div class="section-label">
+          something interesting
+        </div>
+
+        <div
+          class="fact"
+          id="fact"
+          aria-live="polite"
+        >
+          Loading something interesting...
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================
+           ACTIONS
+      ====================================================== -->
+
+      <div class="actions">
+
+        <button
+          class="primary"
+          id="refreshBtn"
+        >
+          New one
+        </button>
+
+        <button
+          class="secondary-button"
+          id="copyBtn"
+        >
+          Copy
+        </button>
+
+        <button
+          class="secondary-button"
+          id="shareBtn"
+        >
+          Share
+        </button>
+
+      </div>
+
+
+      <!-- =====================================================
+           FOOTER
+      ====================================================== -->
+
+      <footer>
+
+        <div>
+          Made for the days when you need a tiny reset.
+        </div>
+
+        <div class="footer-right">
+
+          <kbd>Space</kbd>
+          new
+
+          <kbd>C</kbd>
+          copy
+
+        </div>
+
+      </footer>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================================
+       SETTINGS MODAL
+  ========================================================== -->
+
+  <div
+    class="modal"
+    id="settingsModal"
+    aria-hidden="true"
+  >
+
+    <div class="modal-box">
+
+      <div class="modal-header">
+
+        <h3>
+          Appearance & settings
+        </h3>
+
+        <button
+          class="small-button"
+          data-close
+          aria-label="Close settings"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="section-label">
+        theme
+      </div>
+
+
+      <div class="theme-list">
+
+        <button
+          class="theme selected"
+          data-theme-choice="light"
+        >
+          <span class="theme-color"></span>
+          Light
+        </button>
+
+        <button
+          class="theme"
+          data-theme-choice="dark"
+        >
+          <span class="theme-color"></span>
+          Dark
+        </button>
+
+        <button
+          class="theme"
+          data-theme-choice="desert"
+        >
+          <span class="theme-color"></span>
+          Desert
+        </button>
+
+        <button
+          class="theme"
+          data-theme-choice="ocean"
+        >
+          <span class="theme-color"></span>
+          Ocean
+        </button>
+
+        <button
+          class="theme"
+          data-theme-choice="forest"
+        >
+          <span class="theme-color"></span>
+          Forest
+        </button>
+
+        <button
+          class="theme"
+          data-theme-choice="sunset"
+        >
+          <span class="theme-color"></span>
+          Sunset
+        </button>
+
+        <button
+          class="theme"
+          data-theme-choice="lavender"
+        >
+          <span class="theme-color"></span>
+          Lavender
+        </button>
+
+        <button
+          class="theme"
+          data-theme-choice="amoled"
+        >
+          <span class="theme-color"></span>
+          AMOLED
+        </button>
+
+      </div>
+
+
+      <div class="setting">
+
+        <div>
+
+          <div class="setting-title">
+            Automatic refresh
+          </div>
+
+          <div class="setting-description">
+            Show a new combination every 30 seconds.
+          </div>
+
+        </div>
+
+        <label class="switch">
+
+          <input
+            type="checkbox"
+            id="autoGenerate"
+          >
+
+          <span class="slider"></span>
+
+        </label>
+
+      </div>
+
+
+      <div class="setting">
+
+        <div>
+
+          <div class="setting-title">
+            Animations
+          </div>
+
+          <div class="setting-description">
+            Keep the small transition when changing content.
+          </div>
+
+        </div>
+
+        <label class="switch">
+
+          <input
+            type="checkbox"
+            id="animations"
+            checked
+          >
+
+          <span class="slider"></span>
+
+        </label>
+
+      </div>
+
+
+      <div class="setting">
+
+        <div>
+
+          <div class="setting-title">
+            Haptic feedback
+          </div>
+
+          <div class="setting-description">
+            Tiny vibration on supported devices.
+          </div>
+
+        </div>
+
+        <label class="switch">
+
+          <input
+            type="checkbox"
+            id="haptic"
+            checked
+          >
+
+          <span class="slider"></span>
+
+        </label>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       HISTORY MODAL
+  ========================================================== -->
+
+  <div
+    class="modal"
+    id="historyModal"
+    aria-hidden="true"
+  >
+
+    <div class="modal-box">
+
+      <div class="modal-header">
+
+        <h3>
+          Your history
+        </h3>
+
+        <button
+          class="small-button"
+          data-close
+          aria-label="Close history"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div
+        class="history"
+        id="history"
+      ></div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       TOAST
+  ========================================================== -->
+
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+
+  <script>
+
+    /* =========================================================
+       CONTENT DATA
+    ========================================================== */
+
+    const affirmations = [
+
+      {
+        text:
+          "You are enough, even while you're still figuring things out.",
+        category:
+          "self-love"
+      },
+
+      {
+        text:
+          "You can learn things that once felt completely out of reach.",
+        category:
+          "growth"
+      },
+
+      {
+        text:
+          "You don't have to solve your whole life today.",
+        category:
+          "calm"
+      },
+
+      {
+        text:
+          "The small things you do consistently matter more than the occasional burst of motivation.",
+        category:
+          "motivation"
+      },
+
+      {
+        text:
+          "Confidence grows when you keep the promises you make to yourself.",
+        category:
+          "confidence"
+      },
+
+      {
+        text:
+          "It's okay to start over without calling it a failure.",
+        category:
+          "growth"
+      },
+
+      {
+        text:
+          "Some progress is quiet. That doesn't make it less real.",
+        category:
+          "motivation"
+      },
+
+      {
+        text:
+          "You are allowed to be proud of how far you've come.",
+        category:
+          "self-love"
+      },
+
+      {
+        text:
+          "A mistake is something you made, not everything you are.",
+        category:
+          "growth"
+      },
+
+      {
+        text:
+          "You don't need to rush just because everyone else looks busy.",
+        category:
+          "calm"
+      },
+
+      {
+        text:
+          "You have survived every difficult day you've had so far.",
+        category:
+          "motivation"
+      },
+
+      {
+        text:
+          "Your voice is worth hearing.",
+        category:
+          "confidence"
+      },
+
+      {
+        text:
+          "You can be a work in progress and still be proud of yourself.",
+        category:
+          "self-love"
+      },
+
+      {
+        text:
+          "You don't need permission to take yourself seriously.",
+        category:
+          "confidence"
+      },
+
+      {
+        text:
+          "A slower day isn't automatically a wasted day.",
+        category:
+          "calm"
+      },
+
+      {
+        text:
+          "Your future is built from ordinary days like this one.",
+        category:
+          "motivation"
+      },
+
+      {
+        text:
+          "You are allowed to change your mind and choose a different path.",
+        category:
+          "growth"
+      },
+
+      {
+        text:
+          "You don't have to become someone else to become better.",
+        category:
+          "self-love"
+      },
+
+      {
+        text:
+          "Doing something badly at first is still doing something.",
+        category:
+          "growth"
+      },
+
+      {
+        text:
+          "You're probably further along than your worst day makes you think.",
+        category:
+          "motivation"
+      }
+
+    ];
+
+
+    const facts = [
+
+      {
+        text:
+          "Octopuses have three hearts.",
+        category:
+          "animals"
+      },
+
+      {
+        text:
+          "A day on Venus is longer than a year on Venus.",
+        category:
+          "space"
+      },
+
+      {
+        text:
+          "Sharks existed before trees.",
+        category:
+          "nature"
+      },
+
+      {
+        text:
+          "The Moon experiences moonquakes.",
+        category:
+          "space"
+      },
+
+      {
+        text:
+          "Bananas are botanically berries, while strawberries aren't true berries.",
+        category:
+          "nature"
+      },
+
+      {
+        text:
+          "Some crows can remember individual human faces.",
+        category:
+          "animals"
+      },
+
+      {
+        text:
+          "The speed of light in vacuum is about 299,792 kilometers per second.",
+        category:
+          "science"
+      },
+
+      {
+        text:
+          "Saturn is less dense than water.",
+        category:
+          "space"
+      },
+
+      {
+        text:
+          "Your fingerprints form before birth and generally remain stable throughout your life.",
+        category:
+          "human"
+      },
+
+      {
+        text:
+          "Your stomach protects itself from its own acid using a specialized mucus barrier.",
+        category:
+          "human"
+      },
+
+      {
+        text:
+          "Some frogs can survive being partially frozen and recover after temperatures rise.",
+        category:
+          "animals"
+      },
+
+      {
+        text:
+          "A cloud can contain a surprisingly large amount of water while still appearing almost weightless.",
+        category:
+          "science"
+      },
+
+      {
+        text:
+          "The human brain uses a significant amount of the body's energy even while you're resting.",
+        category:
+          "human"
+      },
+
+      {
+        text:
+          "The Moon is slowly moving farther away from Earth.",
+        category:
+          "space"
+      },
+
+      {
+        text:
+          "Some trees exchange nutrients and chemical signals through underground fungal networks.",
+        category:
+          "nature"
+      },
+
+      {
+        text:
+          "Ancient Roman concrete has demonstrated remarkable durability in some marine environments.",
+        category:
+          "history"
+      }
+
+    ];
+
+
+    /* =========================================================
+       STORAGE
+    ========================================================== */
+
+    const STORAGE_KEY =
+      "daily_boost_v4";
+
+
+    const defaultState = {
+
+      theme:
+        "light",
+
+      category:
+        "all",
+
+      history:
+        [],
+
+      generated:
+        0,
+
+      current:
+        null,
+
+      settings: {
+
+        autoGenerate:
+          false,
+
+        animations:
+          true,
+
+        haptic:
+          true
+
+      }
+
+    };
+
+
+    let state =
+      loadState();
+
+
+    let autoTimer =
+      null;
+
+
+    /* =========================================================
+       DOM
+    ========================================================== */
+
+    const body =
+      document.body;
+
+    const content =
+      document.getElementById(
+        "content"
+      );
+
+    const affirmationEl =
+      document.getElementById(
+        "affirmation"
+      );
+
+    const categoryEl =
+      document.getElementById(
+        "affirmationCategory"
+      );
+
+    const factEl =
+      document.getElementById(
+        "fact"
+      );
+
+    const historyBtn =
+      document.getElementById(
+        "historyBtn"
+      );
+
+    const settingsBtn =
+      document.getElementById(
+        "settingsBtn"
+      );
+
+    const refreshBtn =
+      document.getElementById(
+        "refreshBtn"
+      );
+
+    const copyBtn =
+      document.getElementById(
+        "copyBtn"
+      );
+
+    const shareBtn =
+      document.getElementById(
+        "shareBtn"
+      );
+
+    const settingsModal =
+      document.getElementById(
+        "settingsModal"
+      );
+
+    const historyModal =
+      document.getElementById(
+        "historyModal"
+      );
+
+    const historyEl =
+      document.getElementById(
+        "history"
+      );
+
+    const toastEl =
+      document.getElementById(
+        "toast"
+      );
+
+    const autoGenerateInput =
+      document.getElementById(
+        "autoGenerate"
+      );
+
+    const animationsInput =
+      document.getElementById(
+        "animations"
+      );
+
+    const hapticInput =
+      document.getElementById(
+        "haptic"
+      );
+
+
+    /* =========================================================
+       LOAD / SAVE
+    ========================================================== */
+
+    function loadState() {
+
+      try {
+
+        const saved =
+          localStorage.getItem(
+            STORAGE_KEY
+          );
+
+        if (!saved) {
+
+          return {
+            ...structuredClone(
+              defaultState
+            )
+          };
+
+        }
+
+        const parsed =
+          JSON.parse(saved);
+
+        return {
+
+          ...structuredClone(
+            defaultState
+          ),
+
+          ...parsed,
+
+          settings: {
+
+            ...structuredClone(
+              defaultState
+            ).settings,
+
+            ...(parsed.settings || {})
+
+          }
+
+        };
+
+      } catch (error) {
+
+        console.warn(
+          "Could not load saved state.",
+          error
+        );
+
+        return structuredClone(
+          defaultState
+        );
+
+      }
+
+    }
+
+
+    function saveState() {
+
+      try {
+
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify(
+            state
+          )
+        );
+
+      } catch (error) {
+
+        console.warn(
+          "Could not save state.",
+          error
+        );
+
+      }
+
+    }
+
+
+    /* =========================================================
+       UTILITIES
+    ========================================================== */
+
+    function randomItem(
+      array
+    ) {
+
+      return array[
+        Math.floor(
+          Math.random() *
+          array.length
+        )
+      ];
+
+    }
+
+
+    function formatCategory(
+      category
+    ) {
+
+      return category
+        .replace(
+          "-",
+          " "
+        )
+        .replace(
+          /\b\w/g,
+          char =>
+            char.toUpperCase()
+        );
+
+    }
+
+
+    function vibrate() {
+
+      if (
+        state.settings.haptic &&
+        "vibrate" in navigator
+      ) {
+
+        navigator.vibrate(8);
+
+      }
+
+    }
+
+
+    /* =========================================================
+       THEME
+    ========================================================== */
+
+    function setTheme(
+      theme
+    ) {
+
+      state.theme =
+        theme;
+
+      if (
+        theme === "light"
+      ) {
+
+        body.removeAttribute(
+          "data-theme"
+        );
+
+      } else {
+
+        body.setAttribute(
+          "data-theme",
+          theme
+        );
+
+      }
+
+      document
+        .querySelectorAll(
+          ".theme"
+        )
+        .forEach(
+          button => {
+
+            button.classList.toggle(
+              "selected",
+              button.dataset.themeChoice ===
+                theme
+            );
+
+          }
+        );
+
+      saveState();
+
+    }
+
+
+    /* =========================================================
+       GENERATION
+    ========================================================== */
+
+    function generate() {
+
+      let affirmationPool =
+        affirmations;
+
+
+      if (
+        state.category !==
+        "all"
+      ) {
+
+        affirmationPool =
+          affirmations.filter(
+            item =>
+              item.category ===
+              state.category
+          );
+
+      }
+
+
+      if (
+        !affirmationPool.length
+      ) {
+
+        affirmationPool =
+          affirmations;
+
+      }
+
+
+      let affirmation =
+        randomItem(
+          affirmationPool
+        );
+
+
+      /*
+        Avoid an immediate duplicate.
+      */
+
+      if (
+        state.current &&
+        affirmationPool.length > 1
+      ) {
+
+        let attempts = 0;
+
+        while (
+          affirmation.text ===
+            state.current
+              .affirmation
+              .text &&
+          attempts < 10
+        ) {
+
+          affirmation =
+            randomItem(
+              affirmationPool
+            );
+
+          attempts++;
+
+        }
+
+      }
+
+
+      let fact =
+        randomItem(
+          facts
+        );
+
+
+      if (
+        state.current &&
+        facts.length > 1
+      ) {
+
+        let attempts = 0;
+
+        while (
+          fact.text ===
+            state.current
+              .fact
+              .text &&
+          attempts < 10
+        ) {
+
+          fact =
+            randomItem(
+              facts
+            );
+
+          attempts++;
+
+        }
+
+      }
+
+
+      const entry = {
+
+        id:
+          `${Date.now()}-${Math.random()
+            .toString(16)
+            .slice(2)}`,
+
+        affirmation,
+
+        fact,
+
+        createdAt:
+          Date.now()
+
+      };
+
+
+      state.current =
+        entry;
+
+      state.generated +=
+        1;
+
+
+      state.history.unshift(
+        entry
+      );
+
+
+      state.history =
+        state.history.slice(
+          0,
+          30
+        );
+
+
+      saveState();
+
+      render();
+
+      vibrate();
+
+    }
+
+
+    /* =========================================================
+       RENDER
+    ========================================================== */
+
+    function render() {
+
+      if (
+        !state.current
+      ) {
+
+        return;
+
+      }
+
+
+      if (
+        state.settings.animations
+      ) {
+
+        content.classList.remove(
+          "swap"
+        );
+
+        void content.offsetWidth;
+
+        content.classList.add(
+          "swap"
+        );
+
+      }
+
+
+      affirmationEl.textContent =
+        state.current
+          .affirmation
+          .text;
+
+
+      categoryEl.textContent =
+        formatCategory(
+          state.current
+            .affirmation
+            .category
+        );
+
+
+      factEl.innerHTML =
+        "";
+
+
+      const strong =
+        document.createElement(
+          "strong"
+        );
+
+
+      strong.textContent =
+        "Did you know? ";
+
+
+      factEl.appendChild(
+        strong
+      );
+
+
+      factEl.appendChild(
+        document.createTextNode(
+          state.current
+            .fact
+            .text
+        )
+      );
+
+    }
+
+
+    /* =========================================================
+       COPY
+    ========================================================== */
+
+    function getShareText() {
+
+      if (
+        !state.current
+      ) {
+
+        return "";
+
+      }
+
+
+      return (
+
+        "Daily Boost\n\n" +
+
+        "Affirmation\n" +
+
+        state.current
+          .affirmation
+          .text +
+
+        "\n\n" +
+
+        "Something interesting\n" +
+
+        state.current
+          .fact
+          .text
+
+      );
+
+    }
+
+
+    async function copyCurrent() {
+
+      const text =
+        getShareText();
+
+
+      if (!text) {
+
+        return;
+
+      }
+
+
+      try {
+
+        await navigator.clipboard.writeText(
+          text
+        );
+
+        showToast(
+          "Copied"
+        );
+
+      } catch {
+
+        const textarea =
+          document.createElement(
+            "textarea"
+          );
+
+
+        textarea.value =
+          text;
+
+
+        textarea.style.position =
+          "fixed";
+
+
+        textarea.style.opacity =
+          "0";
+
+
+        document.body.appendChild(
+          textarea
+        );
+
+
+        textarea.select();
+
+
+        document.execCommand(
+          "copy"
+        );
+
+
+        textarea.remove();
+
+
+        showToast(
+          "Copied"
+        );
+
+      }
+
+
+      vibrate();
+
+    }
+
+
+    /* =========================================================
+       SHARE
+    ========================================================== */
+
+    async function shareCurrent() {
+
+      const text =
+        getShareText();
+
+
+      if (!text) {
+
+        return;
+
+      }
+
+
+      if (
+        typeof navigator.share ===
+        "function"
+      ) {
+
+        try {
+
+          await navigator.share({
+
+            title:
+              "Daily Boost",
+
+            text
+
+          });
+
+
+          vibrate();
+
+          return;
+
+        } catch (error) {
+
+          if (
+            error.name ===
+            "AbortError"
+          ) {
+
+            return;
+
+          }
+
+        }
+
+      }
+
+
+      await copyCurrent();
+
+      showToast(
+        "Sharing isn't available, so it was copied instead."
+      );
+
+    }
+
+
+    /* =========================================================
+       HISTORY
+    ========================================================== */
+
+    function renderHistory() {
+
+      historyEl.innerHTML =
+        "";
+
+
+      if (
+        !state.history.length
+      ) {
+
+        const empty =
+          document.createElement(
+            "div"
+          );
+
+
+        empty.className =
+          "empty";
+
+
+        empty.textContent =
+          "Nothing here yet.";
+
+
+        historyEl.appendChild(
+          empty
+        );
+
+
+        return;
+
+      }
+
+
+      state.history.forEach(
+        entry => {
+
+          const button =
+            document.createElement(
+              "button"
+            );
+
+
+          button.type =
+            "button";
+
+
+          button.className =
+            "history-item";
+
+
+          const title =
+            document.createElement(
+              "strong"
+            );
+
+
+          title.textContent =
+            entry
+              .affirmation
+              .text;
+
+
+          const fact =
+            document.createElement(
+              "span"
+            );
+
+
+          fact.textContent =
+            entry
+              .fact
+              .text;
+
+
+          button.appendChild(
+            title
+          );
+
+
+          button.appendChild(
+            fact
+          );
+
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              state.current =
+                entry;
+
+
+              saveState();
+
+              render();
+
+              closeModal(
+                historyModal
+              );
+
+            }
+          );
+
+
+          historyEl.appendChild(
+            button
+          );
+
+        }
+      );
+
+    }
+
+
+    /* =========================================================
+       MODALS
+    ========================================================== */
+
+    function openModal(
+      modal
+    ) {
+
+      modal.classList.add(
+        "open"
+      );
+
+
+      modal.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+
+      document.body.style.overflow =
+        "hidden";
+
+    }
+
+
+    function closeModal(
+      modal
+    ) {
+
+      modal.classList.remove(
+        "open"
+      );
+
+
+      modal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+
+      if (
+        !document.querySelector(
+          ".modal.open"
+        )
+      ) {
+
+        document.body.style.overflow =
+          "";
+
+      }
+
+    }
+
+
+    /* =========================================================
+       TOAST
+    ========================================================== */
+
+    let toastTimer =
+      null;
+
+
+    function showToast(
+      message
+    ) {
+
+      toastEl.textContent =
+        message;
+
+
+      toastEl.classList.add(
+        "visible"
+      );
+
+
+      clearTimeout(
+        toastTimer
+      );
+
+
+      toastTimer =
+        setTimeout(
+          () => {
+
+            toastEl.classList.remove(
+              "visible"
+            );
+
+          },
+          1800
+        );
+
+    }
+
+
+    /* =========================================================
+       AUTO GENERATION
+    ========================================================== */
+
+    function updateAutoRefresh() {
+
+      clearInterval(
+        autoTimer
+      );
+
+
+      autoTimer =
+        null;
+
+
+      if (
+        !state.settings
+          .autoGenerate
+      ) {
+
+        return;
+
+      }
+
+
+      autoTimer =
+        setInterval(
+          generate,
+          30000
+        );
+
+    }
+
+
+    /* =========================================================
+       FILTER BUTTONS
+    ========================================================== */
+
+    document
+      .querySelectorAll(
+        ".filter"
+      )
+      .forEach(
+        button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              document
+                .querySelectorAll(
+                  ".filter"
+                )
+                .forEach(
+                  item => {
+
+                    item.classList.remove(
+                      "active"
+                    );
+
+                  }
+                );
+
+
+              button.classList.add(
+                "active"
+              );
+
+
+              state.category =
+                button.dataset.category;
+
+
+              saveState();
+
+              generate();
+
+            }
+          );
+
+        }
+      );
+
+
+    /* =========================================================
+       THEME BUTTONS
+    ========================================================== */
+
+    document
+      .querySelectorAll(
+        ".theme"
+      )
+      .forEach(
+        button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              setTheme(
+                button.dataset
+                  .themeChoice
+              );
+
+
+              vibrate();
+
+            }
+          );
+
+        }
+      );
+
+
+    /* =========================================================
+       SETTINGS
+    ========================================================== */
+
+    autoGenerateInput.addEventListener(
+      "change",
+      event => {
+
+        state.settings
+          .autoGenerate =
+          event.target.checked;
+
+
+        saveState();
+
+        updateAutoRefresh();
+
+      }
+    );
+
+
+    animationsInput.addEventListener(
+      "change",
+      event => {
+
+        state.settings
+          .animations =
+          event.target.checked;
+
+
+        saveState();
+
+      }
+    );
+
+
+    hapticInput.addEventListener(
+      "change",
+      event => {
+
+        state.settings
+          .haptic =
+          event.target.checked;
+
+
+        saveState();
+
+        vibrate();
+
+      }
+    );
+
+
+    /* =========================================================
+       MAIN BUTTONS
+    ========================================================== */
+
+    refreshBtn.addEventListener(
+      "click",
+      generate
+    );
+
+
+    copyBtn.addEventListener(
+      "click",
+      copyCurrent
+    );
+
+
+    shareBtn.addEventListener(
+      "click",
+      shareCurrent
+    );
+
+
+    historyBtn.addEventListener(
+      "click",
+      () => {
+
+        renderHistory();
+
+        openModal(
+          historyModal
+        );
+
+      }
+    );
+
+
+    settingsBtn.addEventListener(
+      "click",
+      () => {
+
+        autoGenerateInput.checked =
+          state.settings
+            .autoGenerate;
+
+
+        animationsInput.checked =
+          state.settings
+            .animations;
+
+
+        hapticInput.checked =
+          state.settings
+            .haptic;
+
+
+        openModal(
+          settingsModal
+        );
+
+      }
+    );
+
+
+    /* =========================================================
+       MODAL CLOSE
+    ========================================================== */
+
+    document
+      .querySelectorAll(
+        "[data-close]"
+      )
+      .forEach(
+        button => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              const modal =
+                button.closest(
+                  ".modal"
+                );
+
+
+              closeModal(
+                modal
+              );
+
+            }
+          );
+
+        }
+      );
+
+
+    document
+      .querySelectorAll(
+        ".modal"
+      )
+      .forEach(
+        modal => {
+
+          modal.addEventListener(
+            "click",
+            event => {
+
+              if (
+                event.target ===
+                modal
+              ) {
+
+                closeModal(
+                  modal
+                );
+
+              }
+
+            }
+          );
+
+        }
+      );
+
+
+    /* =========================================================
+       KEYBOARD SHORTCUTS
+    ========================================================== */
+
+    document.addEventListener(
+      "keydown",
+      event => {
+
+        const activeTag =
+          document.activeElement
+            ?.tagName;
+
+
+        const isTyping =
+          activeTag ===
+            "INPUT" ||
+          activeTag ===
+            "TEXTAREA" ||
+          activeTag ===
+            "SELECT";
+
+
+        if (isTyping) {
+
+          return;
+
+        }
+
+
+        /*
+          Space = new
+        */
+
+        if (
+          event.code ===
+          "Space"
+        ) {
+
+          event.preventDefault();
+
+          generate();
+
+          return;
+
+        }
+
+
+        /*
+          C = copy
+        */
+
+        if (
+          event.key.toLowerCase() ===
+          "c"
+        ) {
+
+          copyCurrent();
+
+          return;
+
+        }
+
+
+        /*
+          Escape = close
+        */
+
+        if (
+          event.key ===
+          "Escape"
+        ) {
+
+          closeModal(
+            settingsModal
+          );
+
+          closeModal(
+            historyModal
+          );
+
+        }
+
+      }
+    );
+
+
+    /* =========================================================
+       INITIALIZE
+    ========================================================== */
+
+    function init() {
+
+      setTheme(
+        state.theme
+      );
+
+
+      autoGenerateInput.checked =
+        state.settings
+          .autoGenerate;
+
+
+      animationsInput.checked =
+        state.settings
+          .animations;
+
+
+      hapticInput.checked =
+        state.settings
+          .haptic;
+
+
+      document
+        .querySelectorAll(
+          ".filter"
+        )
+        .forEach(
+          button => {
+
+            button.classList.toggle(
+              "active",
+              button.dataset.category ===
+                state.category
+            );
+
+          }
+        );
+
+
+      if (
+        state.current
+      ) {
+
+        render();
+
+      } else {
+
+        generate();
+
+      }
+
+
+      updateAutoRefresh();
+
+    }
+
+
+    init();
+
+  </script>
+
+</body>
+</html>
