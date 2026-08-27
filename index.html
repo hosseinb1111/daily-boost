@@ -15,20 +15,22 @@
 
   <meta
     name="theme-color"
-    content="#f4efe6"
+    content="#f3eee5"
   >
 
   <title>Daily Boost</title>
 
+
   <!-- =========================================================
-       CUSTOM FAVICON
+       FAVICON
   ========================================================== -->
 
   <link
     rel="icon"
     type="image/svg+xml"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23f4efe6'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23e28a2b'/%3E%3Cg stroke='%23b96518' stroke-width='4' stroke-linecap='round'%3E%3Cpath d='M32 8v7'/%3E%3Cpath d='M32 49v7'/%3E%3Cpath d='M8 32h7'/%3E%3Cpath d='M49 32h7'/%3E%3Cpath d='m15 15 5 5'/%3E%3Cpath d='m44 44 5 5'/%3E%3Cpath d='m49 15-5 5'/%3E%3Cpath d='m20 44-5 5'/%3E%3C/g%3E%3C/svg%3E"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f3eee5'/%3E%3Ccircle cx='32' cy='32' r='12' fill='%23dc8427'/%3E%3Cpath d='M32 9v7M32 48v7M9 32h7M48 32h7' stroke='%23a95d16' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E"
   >
+
 
   <style>
 
@@ -36,19 +38,31 @@
        RESET
     ========================================================== */
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *,
+    *::before,
+    *::after {
+      margin:
+        0;
+
+      padding:
+        0;
+
+      box-sizing:
+        border-box;
     }
 
+
     html {
-      scroll-behavior: smooth;
+      scroll-behavior:
+        smooth;
     }
+
 
     body,
     button,
-    select {
+    select,
+    input,
+    textarea {
       font-family:
         Inter,
         -apple-system,
@@ -57,361 +71,875 @@
         sans-serif;
     }
 
-    body {
-      min-height: 100vh;
 
-      color: var(--text);
+    body {
+      min-height:
+        100vh;
+
+      color:
+        var(--text);
 
       background:
-        linear-gradient(
-          135deg,
-          var(--background),
-          var(--background-2)
-        );
+        var(--background);
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display:
+        flex;
 
-      padding: 28px;
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      padding:
+        32px 20px;
 
       transition:
-        background 0.35s ease,
-        color 0.35s ease;
+        background 0.3s ease,
+        color 0.3s ease;
     }
+
 
     button,
-    select {
-      font: inherit;
+    select,
+    input,
+    textarea {
+      font:
+        inherit;
     }
+
 
     button {
-      border: 0;
+      border:
+        0;
     }
 
-    ::selection {
-      background: var(--accent);
-      color: #fff;
+
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline:
+        2px solid
+        var(--accent);
+
+      outline-offset:
+        3px;
     }
+
+
+    ::selection {
+      background:
+        var(--accent);
+
+      color:
+        #fff;
+    }
+
 
     /* =========================================================
        THEME SYSTEM
     ========================================================== */
 
     :root {
-      --background: #f5f1e8;
-      --background-2: #e9dfcf;
+      --background:
+        #f3eee5;
 
-      --paper: #fffdf8;
+      --paper:
+        #fffdf8;
 
-      --text: #242321;
-      --secondary: #716b63;
-      --muted: #a29a90;
+      --text:
+        #242321;
 
-      --line: #ded6ca;
+      --secondary:
+        #716b63;
 
-      --accent: #dc8427;
-      --accent-dark: #ac5d13;
-      --accent-light: #f7e5cd;
+      --muted:
+        #a29a90;
 
-      --fact-bg: #f7f2e9;
+      --line:
+        #ddd5c9;
 
-      --shadow:
-        0 18px 50px rgba(58, 43, 26, 0.10);
-    }
+      --accent:
+        #dc8427;
 
-    /* Dark */
+      --accent-dark:
+        #a95d16;
 
-    [data-theme="dark"] {
-      --background: #131313;
-      --background-2: #0b0b0b;
+      --accent-light:
+        #f6e5ce;
 
-      --paper: #181818;
-
-      --text: #f3f0ea;
-      --secondary: #aaa39a;
-      --muted: #777168;
-
-      --line: #30302e;
-
-      --accent: #e99b4b;
-      --accent-dark: #c77a2e;
-      --accent-light: #2b2117;
-
-      --fact-bg: #20201e;
+      --fact-bg:
+        #f7f2e9;
 
       --shadow:
-        0 22px 60px rgba(0, 0, 0, 0.35);
+        0 14px 40px
+        rgba(
+          57,
+          42,
+          25,
+          0.08
+        );
     }
 
-    /* Desert */
-
-    [data-theme="desert"] {
-      --background: #e7c49d;
-      --background-2: #c68e62;
-
-      --paper: #fff7ec;
-
-      --text: #41291d;
-      --secondary: #765646;
-      --muted: #9f7760;
-
-      --line: #dec2a7;
-
-      --accent: #ba601d;
-      --accent-dark: #893e11;
-      --accent-light: #f5dfc5;
-
-      --fact-bg: #fbecdb;
-    }
-
-    /* Ocean */
-
-    [data-theme="ocean"] {
-      --background: #d8edf3;
-      --background-2: #9cc6d2;
-
-      --paper: #f8fdff;
-
-      --text: #19343f;
-      --secondary: #56727d;
-      --muted: #7f9aa3;
-
-      --line: #c8dde2;
-
-      --accent: #197a98;
-      --accent-dark: #14576b;
-      --accent-light: #dceff4;
-
-      --fact-bg: #edf8fb;
-    }
-
-    /* Forest */
-
-    [data-theme="forest"] {
-      --background: #dce8dc;
-      --background-2: #9cb59e;
-
-      --paper: #f9fdf8;
-
-      --text: #1d3120;
-      --secondary: #58705b;
-      --muted: #7d917f;
-
-      --line: #c7d5c8;
-
-      --accent: #417a47;
-      --accent-dark: #2b5a30;
-      --accent-light: #e0ecdf;
-
-      --fact-bg: #edf5ec;
-    }
-
-    /* Sunset */
-
-    [data-theme="sunset"] {
-      --background: #f0c7bc;
-      --background-2: #d99187;
-
-      --paper: #fff8f6;
-
-      --text: #432a2a;
-      --secondary: #76565a;
-      --muted: #9a767b;
-
-      --line: #e2c3bf;
-
-      --accent: #bd5362;
-      --accent-dark: #923c49;
-      --accent-light: #f4dde0;
-
-      --fact-bg: #fceeed;
-    }
-
-    /* Lavender */
-
-    [data-theme="lavender"] {
-      --background: #e1d8ed;
-      --background-2: #bba5d4;
-
-      --paper: #fcf9ff;
-
-      --text: #30273b;
-      --secondary: #685d70;
-      --muted: #8d8195;
-
-      --line: #d4c9df;
-
-      --accent: #7552a5;
-      --accent-dark: #593c82;
-      --accent-light: #eae2f2;
-
-      --fact-bg: #f5eff9;
-    }
-
-    /* AMOLED */
-
-    [data-theme="amoled"] {
-      --background: #000;
-      --background-2: #000;
-
-      --paper: #0b0b0b;
-
-      --text: #f0f0f0;
-      --secondary: #a1a1a1;
-      --muted: #686868;
-
-      --line: #212121;
-
-      --accent: #5ca9ff;
-      --accent-dark: #347fcf;
-      --accent-light: #111c28;
-
-      --fact-bg: #111;
-
-      --shadow:
-        0 22px 60px rgba(0, 0, 0, 0.70);
-    }
 
     /* =========================================================
-       MAIN LAYOUT
+       DARK
+    ========================================================== */
+
+    [data-theme="dark"] {
+      --background:
+        #111110;
+
+      --paper:
+        #181817;
+
+      --text:
+        #f1eee8;
+
+      --secondary:
+        #a9a39a;
+
+      --muted:
+        #767169;
+
+      --line:
+        #30302e;
+
+      --accent:
+        #e99b4b;
+
+      --accent-dark:
+        #c6782d;
+
+      --accent-light:
+        #2a2118;
+
+      --fact-bg:
+        #20201e;
+
+      --shadow:
+        0 20px 50px
+        rgba(
+          0,
+          0,
+          0,
+          0.32
+        );
+    }
+
+
+    /* =========================================================
+       DESERT
+    ========================================================== */
+
+    [data-theme="desert"] {
+      --background:
+        #e4c19b;
+
+      --paper:
+        #fff7ec;
+
+      --text:
+        #41291d;
+
+      --secondary:
+        #765646;
+
+      --muted:
+        #9f7760;
+
+      --line:
+        #dec2a7;
+
+      --accent:
+        #ba601d;
+
+      --accent-dark:
+        #893e11;
+
+      --accent-light:
+        #f5dfc5;
+
+      --fact-bg:
+        #fbecdb;
+    }
+
+
+    /* =========================================================
+       OCEAN
+    ========================================================== */
+
+    [data-theme="ocean"] {
+      --background:
+        #d9edf2;
+
+      --paper:
+        #f8fdff;
+
+      --text:
+        #19343f;
+
+      --secondary:
+        #56727d;
+
+      --muted:
+        #7f9aa3;
+
+      --line:
+        #c8dde2;
+
+      --accent:
+        #197a98;
+
+      --accent-dark:
+        #14576b;
+
+      --accent-light:
+        #dceff4;
+
+      --fact-bg:
+        #edf8fb;
+    }
+
+
+    /* =========================================================
+       FOREST
+    ========================================================== */
+
+    [data-theme="forest"] {
+      --background:
+        #dce7dc;
+
+      --paper:
+        #f9fdf8;
+
+      --text:
+        #1d3120;
+
+      --secondary:
+        #58705b;
+
+      --muted:
+        #7d917f;
+
+      --line:
+        #c7d5c8;
+
+      --accent:
+        #417a47;
+
+      --accent-dark:
+        #2b5a30;
+
+      --accent-light:
+        #e0ecdf;
+
+      --fact-bg:
+        #edf5ec;
+    }
+
+
+    /* =========================================================
+       SUNSET
+    ========================================================== */
+
+    [data-theme="sunset"] {
+      --background:
+        #edc2b8;
+
+      --paper:
+        #fff8f6;
+
+      --text:
+        #432a2a;
+
+      --secondary:
+        #76565a;
+
+      --muted:
+        #9a767b;
+
+      --line:
+        #e2c3bf;
+
+      --accent:
+        #bd5362;
+
+      --accent-dark:
+        #923c49;
+
+      --accent-light:
+        #f4dde0;
+
+      --fact-bg:
+        #fceeed;
+    }
+
+
+    /* =========================================================
+       LAVENDER
+    ========================================================== */
+
+    [data-theme="lavender"] {
+      --background:
+        #ded5e9;
+
+      --paper:
+        #fcf9ff;
+
+      --text:
+        #30273b;
+
+      --secondary:
+        #685d70;
+
+      --muted:
+        #8d8195;
+
+      --line:
+        #d4c9df;
+
+      --accent:
+        #7552a5;
+
+      --accent-dark:
+        #593c82;
+
+      --accent-light:
+        #eae2f2;
+
+      --fact-bg:
+        #f5eff9;
+    }
+
+
+    /* =========================================================
+       AMOLED
+    ========================================================== */
+
+    [data-theme="amoled"] {
+      --background:
+        #000;
+
+      --paper:
+        #0a0a0a;
+
+      --text:
+        #f0f0f0;
+
+      --secondary:
+        #a1a1a1;
+
+      --muted:
+        #686868;
+
+      --line:
+        #232323;
+
+      --accent:
+        #5ca9ff;
+
+      --accent-dark:
+        #347fcf;
+
+      --accent-light:
+        #111c28;
+
+      --fact-bg:
+        #111;
+
+      --shadow:
+        0 24px 60px
+        rgba(
+          0,
+          0,
+          0,
+          0.70
+        );
+    }
+
+
+    /* =========================================================
+       CUSTOM CURSOR
+       Native cursor is hidden only for fine pointers.
+       Touch devices keep normal browser behavior.
+    ========================================================== */
+
+    .custom-cursor,
+    .custom-cursor-ring {
+      display:
+        none;
+    }
+
+
+    @media (pointer: fine) {
+
+      html,
+      body,
+      button,
+      a,
+      input,
+      select,
+      textarea,
+      [role="button"] {
+        cursor:
+          none;
+      }
+
+
+      .custom-cursor {
+        display:
+          block;
+
+        position:
+          fixed;
+
+        top:
+          0;
+
+        left:
+          0;
+
+        width:
+          7px;
+
+        height:
+          7px;
+
+        border-radius:
+          50%;
+
+        background:
+          var(--accent);
+
+        pointer-events:
+          none;
+
+        z-index:
+          9999;
+
+        transform:
+          translate(
+            -50%,
+            -50%
+          );
+
+        opacity:
+          0;
+
+        transition:
+          width 0.16s ease,
+          height 0.16s ease,
+          opacity 0.18s ease,
+          background 0.18s ease;
+      }
+
+
+      .custom-cursor-ring {
+        display:
+          block;
+
+        position:
+          fixed;
+
+        top:
+          0;
+
+        left:
+          0;
+
+        width:
+          28px;
+
+        height:
+          28px;
+
+        border:
+          1px solid
+          var(--accent);
+
+        border-radius:
+          50%;
+
+        pointer-events:
+          none;
+
+        z-index:
+          9998;
+
+        transform:
+          translate(
+            -50%,
+            -50%
+          );
+
+        opacity:
+          0;
+
+        transition:
+          width 0.2s ease,
+          height 0.2s ease,
+          opacity 0.2s ease,
+          border-color 0.18s ease;
+      }
+
+
+      .custom-cursor.is-hovering {
+        width:
+          12px;
+
+        height:
+          12px;
+      }
+
+
+      .custom-cursor-ring.is-hovering {
+        width:
+          38px;
+
+        height:
+          38px;
+
+        opacity:
+          0.38;
+      }
+
+
+      .custom-cursor.is-clicking {
+        width:
+          5px;
+
+        height:
+          5px;
+      }
+
+
+      .custom-cursor-ring.is-clicking {
+        width:
+          22px;
+
+        height:
+          22px;
+
+        opacity:
+          0.6;
+      }
+
+    }
+
+
+    /* =========================================================
+       MAIN APP
     ========================================================== */
 
     .app {
-      width: min(760px, 100%);
+      width:
+        min(
+          720px,
+          100%
+        );
     }
 
+
     .paper {
-      width: 100%;
+      width:
+        100%;
 
-      background: var(--paper);
-
-      box-shadow: var(--shadow);
-
-      border-radius: 24px;
-
-      padding:
-        42px
-        44px
-        30px;
+      background:
+        var(--paper);
 
       border:
         1px solid
         var(--line);
 
+      box-shadow:
+        var(--shadow);
+
+      border-radius:
+        16px;
+
+      padding:
+        38px 40px 28px;
+
       transition:
-        background 0.35s ease,
-        border-color 0.35s ease,
-        box-shadow 0.35s ease;
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
     }
+
 
     /* =========================================================
        HEADER
     ========================================================== */
 
     header {
-      display: flex;
+      display:
+        flex;
 
-      align-items: flex-start;
+      align-items:
+        flex-start;
 
-      justify-content: space-between;
+      justify-content:
+        space-between;
 
-      gap: 20px;
+      gap:
+        24px;
 
-      padding-bottom: 25px;
+      padding-bottom:
+        23px;
 
       border-bottom:
         1px solid
         var(--line);
     }
 
+
     .brand {
-      display: flex;
+      display:
+        flex;
 
-      align-items: center;
+      align-items:
+        center;
 
-      gap: 13px;
+      gap:
+        12px;
+
+      min-width:
+        0;
     }
 
-    .logo {
-      width: 48px;
-      height: 48px;
 
-      display: grid;
+    .brand-mark {
+      width:
+        40px;
 
-      place-items: center;
+      height:
+        40px;
 
-      border-radius: 14px;
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      flex-shrink:
+        0;
+    }
+
+
+    .brand-mark .goo {
+      display:
+        block;
+
+      width:
+        40px;
+
+      height:
+        40px;
+    }
+
+
+    .brand h1 {
+      font-size:
+        1.38rem;
+
+      line-height:
+        1.2;
+
+      font-weight:
+        700;
+
+      letter-spacing:
+        -0.35px;
+    }
+
+
+    .brand p {
+      margin-top:
+        5px;
+
+      color:
+        var(--secondary);
+
+      font-size:
+        0.82rem;
+
+      line-height:
+        1.5;
+    }
+
+
+    .header-actions {
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        18px;
+
+      flex-shrink:
+        0;
+    }
+
+
+    .header-link {
+      appearance:
+        none;
 
       background:
-        var(--accent-light);
+        transparent;
 
+      color:
+        var(--secondary);
+
+      cursor:
+        pointer;
+
+      padding:
+        3px 0;
+
+      font-size:
+        0.8rem;
+
+      border-bottom:
+        1px solid
+        transparent;
+
+      transition:
+        color 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+
+    .header-link:hover {
+      color:
+        var(--text);
+
+      border-color:
+        var(--line);
+    }
+
+
+    .header-link:disabled {
+      cursor:
+        default;
+
+      opacity:
+        .5;
+    }
+
+
+    /* =========================================================
+       GOO LOGO
+    ========================================================== */
+
+    .goo {
       color:
         var(--accent);
 
-      font-size: 22px;
+      --rate:
+        1;
+
+      overflow:
+        visible;
     }
 
-    .brand h1 {
-      font-size: 1.45rem;
 
-      font-weight: 750;
+    .goo-bound {
+      stroke:
+        currentColor;
 
-      letter-spacing: -0.5px;
+      stroke-width:
+        1;
+
+      opacity:
+        .14;
     }
 
-    .brand p {
-      margin-top: 4px;
 
-      font-size: 0.86rem;
+    .goo-arm {
+      transform-box:
+        view-box;
 
-      color:
-        var(--secondary);
+      transform-origin:
+        center;
+
+      animation:
+        goo-swing
+        calc(
+          var(--dur)
+          *
+          var(--rate, 1)
+        )
+        linear
+        infinite;
     }
 
-    .header-actions {
-      display: flex;
 
-      align-items: center;
+    .goo-core {
+      transform-box:
+        view-box;
 
-      gap: 6px;
+      transform-origin:
+        center;
+
+      animation:
+        goo-breathe
+        calc(
+          3.2s
+          *
+          var(--rate, 1)
+        )
+        ease-in-out
+        infinite;
     }
 
-    .small-button {
-      width: 38px;
-      height: 38px;
 
-      display: grid;
+    @keyframes goo-swing {
 
-      place-items: center;
+      from {
+        transform:
+          rotate(
+            0deg
+          );
+      }
 
-      border-radius: 50%;
+      to {
+        transform:
+          rotate(
+            calc(
+              var(--dir)
+              *
+              360deg
+            )
+          );
+      }
 
-      background: transparent;
-
-      color:
-        var(--secondary);
-
-      cursor: pointer;
-
-      transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
     }
 
-    .small-button:hover {
-      background:
-        var(--fact-bg);
 
-      color:
-        var(--text);
+    @keyframes goo-breathe {
+
+      0%,
+      100% {
+        transform:
+          scale(
+            .82
+          );
+      }
+
+      50% {
+        transform:
+          scale(
+            1.05
+          );
+      }
+
     }
 
-    .small-button:active {
-      transform:
-        scale(0.92);
-    }
 
     /* =========================================================
        INTRO
@@ -419,65 +947,94 @@
 
     .intro {
       padding:
-        34px
-        0
-        24px;
+        35px 0 26px;
     }
+
 
     .intro-label {
       color:
         var(--accent);
 
-      font-size: 0.72rem;
+      font-size:
+        .68rem;
 
-      font-weight: 750;
+      font-weight:
+        750;
 
-      text-transform: uppercase;
+      text-transform:
+        uppercase;
 
-      letter-spacing: 2.3px;
+      letter-spacing:
+        2px;
 
-      margin-bottom: 13px;
+      margin-bottom:
+        13px;
     }
+
 
     .intro h2 {
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
       font-size:
         clamp(
-          1.8rem,
+          1.9rem,
           4vw,
-          2.55rem
+          2.7rem
         );
 
-      line-height: 1.18;
+      line-height:
+        1.18;
 
-      letter-spacing: -1.2px;
+      font-weight:
+        500;
 
-      max-width: 620px;
+      letter-spacing:
+        -1px;
+
+      max-width:
+        650px;
     }
+
 
     .intro p {
       color:
         var(--secondary);
 
-      margin-top: 11px;
+      margin-top:
+        12px;
 
-      line-height: 1.65;
+      line-height:
+        1.7;
 
-      max-width: 570px;
+      font-size:
+        .91rem;
+
+      max-width:
+        590px;
     }
+
 
     /* =========================================================
        FILTERS
     ========================================================== */
 
     .filters {
-      display: flex;
+      display:
+        flex;
 
-      flex-wrap: wrap;
+      flex-wrap:
+        wrap;
 
-      gap: 10px;
+      gap:
+        8px;
 
-      margin-bottom: 30px;
+      margin-bottom:
+        29px;
     }
+
 
     .filter {
       border:
@@ -490,21 +1047,27 @@
       background:
         transparent;
 
-      border-radius: 10px;
+      border-radius:
+        7px;
 
       padding:
-        8px
-        13px;
+        8px 11px;
 
-      cursor: pointer;
+      cursor:
+        pointer;
 
-      font-size: 0.82rem;
+      font-size:
+        .78rem;
+
+      line-height:
+        1;
 
       transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        border-color 0.2s ease;
+        color .18s ease,
+        background .18s ease,
+        border-color .18s ease;
     }
+
 
     .filter:hover {
       color:
@@ -514,6 +1077,7 @@
         var(--fact-bg);
     }
 
+
     .filter.active {
       color:
         var(--accent-dark);
@@ -522,50 +1086,400 @@
         var(--accent-light);
 
       border-color:
-        transparent;
+        var(--accent-light);
 
       font-weight:
         700;
     }
+
+
+    .filter:disabled {
+      cursor:
+        default;
+
+      opacity:
+        .5;
+    }
+
 
     /* =========================================================
        CONTENT
     ========================================================== */
 
     .content {
-      padding-top: 5px;
+      position:
+        relative;
+
+      min-height:
+        300px;
+    }
+
+
+    .content-view {
+      min-height:
+        300px;
 
       transition:
-        opacity 0.2s ease,
-        transform 0.2s ease;
+        opacity .18s ease,
+        visibility .18s ease,
+        transform .18s ease;
     }
 
-    .content.swap {
+
+    .content-view.swap {
       animation:
-        contentSwap 0.4s ease;
+        contentSwap
+        .35s
+        ease;
     }
+
 
     @keyframes contentSwap {
 
       0% {
-        opacity: 0;
+        opacity:
+          0;
+
         transform:
-          translateY(8px);
+          translateY(
+            7px
+          );
       }
 
       100% {
-        opacity: 1;
+        opacity:
+          1;
+
         transform:
-          translateY(0);
+          translateY(
+            0
+          );
       }
 
     }
+
+
+    /* =========================================================
+       LOADING VIEW
+    ========================================================== */
+
+    .loading-view {
+      position:
+        absolute;
+
+      inset:
+        0;
+
+      min-height:
+        300px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+
+      background:
+        var(--paper);
+
+      opacity:
+        0;
+
+      visibility:
+        hidden;
+
+      pointer-events:
+        none;
+
+      transition:
+        opacity .12s ease,
+        visibility .12s ease;
+    }
+
+
+    .loading-view.active {
+      opacity:
+        1;
+
+      visibility:
+        visible;
+    }
+
+
+    .loading-animation {
+      position:
+        relative;
+
+      width:
+        170px;
+
+      height:
+        170px;
+
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        center;
+    }
+
+
+    .loading-animation::before {
+      content:
+        "";
+
+      position:
+        absolute;
+
+      width:
+        138px;
+
+      height:
+        138px;
+
+      border-radius:
+        50%;
+
+      background:
+        var(--accent-light);
+
+      opacity:
+        .7;
+
+      transform:
+        scale(
+          .9
+        );
+
+      animation:
+        loaderPulse
+        1.7s
+        ease-in-out
+        infinite;
+    }
+
+
+    .loading-animation .orb {
+      position:
+        relative;
+
+      z-index:
+        2;
+
+      width:
+        150px;
+
+      height:
+        150px;
+
+      color:
+        var(--accent);
+
+      --rate:
+        .72;
+
+      filter:
+        drop-shadow(
+          0 4px 12px
+          rgba(
+            0,
+            0,
+            0,
+            .06
+          )
+        );
+    }
+
+
+    @keyframes loaderPulse {
+
+      0%,
+      100% {
+        transform:
+          scale(
+            .9
+          );
+
+        opacity:
+          .45;
+      }
+
+      50% {
+        transform:
+          scale(
+            1
+          );
+
+        opacity:
+          .75;
+      }
+
+    }
+
+
+    /* =========================================================
+       ORB
+    ========================================================== */
+
+    .orb {
+      overflow:
+        visible;
+    }
+
+
+    .orb-plane {
+      transform-box:
+        view-box;
+
+      transform-origin:
+        center;
+
+      transform:
+        rotate(
+          var(--tilt)
+        )
+        scale(
+          1,
+          var(--k)
+        );
+    }
+
+
+    .orb-track {
+      stroke:
+        currentColor;
+
+      stroke-width:
+        .9;
+
+      fill:
+        none;
+
+      opacity:
+        .26;
+    }
+
+
+    .orb-arm {
+      transform-box:
+        view-box;
+
+      transform-origin:
+        center;
+
+      animation:
+        orb-arm
+        calc(
+          var(--dur)
+          *
+          var(--rate, 1)
+        )
+        linear
+        infinite;
+    }
+
+
+    .orb-bead {
+      fill:
+        currentColor;
+
+      transform-box:
+        fill-box;
+
+      transform-origin:
+        center;
+
+      animation:
+        orb-bead
+        calc(
+          var(--dur)
+          *
+          var(--rate, 1)
+        )
+        linear
+        infinite;
+    }
+
+
+    .orb-core {
+      fill:
+        currentColor;
+
+      opacity:
+        .38;
+    }
+
+
+    @keyframes orb-arm {
+
+      from {
+        transform:
+          rotate(
+            0deg
+          );
+      }
+
+      to {
+        transform:
+          rotate(
+            calc(
+              var(--dir)
+              *
+              360deg
+            )
+          );
+      }
+
+    }
+
+
+    @keyframes orb-bead {
+
+      from {
+        transform:
+          rotate(
+            0deg
+          )
+          scale(
+            1,
+            var(--inv)
+          );
+      }
+
+      to {
+        transform:
+          rotate(
+            calc(
+              var(--dir)
+              *
+              -360deg
+            )
+          )
+          scale(
+            1,
+            var(--inv)
+          );
+      }
+
+    }
+
+
+    /* =========================================================
+       CONTENT TYPOGRAPHY
+    ========================================================== */
 
     .section-label {
       color:
         var(--muted);
 
-      font-size: 0.72rem;
+      font-size:
+        .66rem;
 
       text-transform:
         uppercase;
@@ -574,8 +1488,9 @@
         1.8px;
 
       margin-bottom:
-        11px;
+        10px;
     }
+
 
     .affirmation {
       font-family:
@@ -585,34 +1500,36 @@
 
       font-size:
         clamp(
-          1.65rem,
+          1.62rem,
           4vw,
-          2.35rem
+          2.28rem
         );
 
       line-height:
-        1.35;
+        1.38;
 
       letter-spacing:
-        -0.5px;
+        -.55px;
 
       max-width:
         650px;
     }
+
 
     .affirmation-category {
       display:
         inline-block;
 
       margin-top:
-        16px;
+        15px;
 
       font-size:
-        0.78rem;
+        .76rem;
 
       color:
         var(--accent-dark);
     }
+
 
     .rule {
       height:
@@ -622,8 +1539,9 @@
         var(--line);
 
       margin:
-        30px 0;
+        29px 0;
     }
+
 
     .fact {
       background:
@@ -634,7 +1552,7 @@
         var(--accent);
 
       padding:
-        16px 18px;
+        15px 17px;
 
       color:
         var(--secondary);
@@ -643,44 +1561,71 @@
         1.68;
 
       border-radius:
-        0 10px 10px 0;
+        0 7px 7px 0;
+
+      font-size:
+        .88rem;
     }
+
 
     .fact strong {
       color:
         var(--text);
     }
 
+
     /* =========================================================
        ACTIONS
     ========================================================== */
 
     .actions {
-      display: flex;
+      display:
+        flex;
 
-      align-items: center;
+      align-items:
+        center;
 
-      gap: 11px;
+      gap:
+        9px;
 
       margin-top:
-        32px;
+        29px;
 
       padding-top:
-        25px;
+        23px;
 
       border-top:
         1px solid
         var(--line);
     }
 
-    .primary {
-      flex: 1;
 
+    .primary,
+    .secondary-button {
       min-height:
-        47px;
+        43px;
 
       border-radius:
-        11px;
+        8px;
+
+      cursor:
+        pointer;
+
+      font-size:
+        .82rem;
+
+      transition:
+        background .18s ease,
+        color .18s ease,
+        border-color .18s ease,
+        transform .18s ease,
+        opacity .18s ease;
+    }
+
+
+    .primary {
+      flex:
+        1;
 
       background:
         var(--accent);
@@ -689,36 +1634,39 @@
         #fff;
 
       padding:
-        0 18px;
+        0 17px;
 
       font-weight:
         700;
-
-      cursor:
-        pointer;
-
-      transition:
-        background 0.2s ease,
-        transform 0.2s ease;
     }
+
 
     .primary:hover {
       background:
         var(--accent-dark);
 
       transform:
-        translateY(-1px);
+        translateY(
+          -1px
+        );
     }
 
+
+    .primary:disabled {
+      cursor:
+        default;
+
+      opacity:
+        .55;
+
+      transform:
+        none;
+    }
+
+
     .secondary-button {
-      min-height:
-        47px;
-
-      border-radius:
-        11px;
-
       padding:
-        0 17px;
+        0 15px;
 
       color:
         var(--text);
@@ -729,14 +1677,8 @@
       border:
         1px solid
         var(--line);
-
-      cursor:
-        pointer;
-
-      transition:
-        background 0.2s ease,
-        border-color 0.2s ease;
     }
+
 
     .secondary-button:hover {
       background:
@@ -746,52 +1688,71 @@
         var(--accent);
     }
 
+
+    .secondary-button:disabled {
+      opacity:
+        .55;
+
+      cursor:
+        default;
+    }
+
+
     /* =========================================================
        FOOTER
     ========================================================== */
 
     footer {
-      display: flex;
+      display:
+        flex;
 
-      align-items: center;
+      align-items:
+        center;
 
       justify-content:
         space-between;
 
-      gap: 15px;
+      gap:
+        15px;
 
       margin-top:
-        20px;
+        18px;
 
       color:
         var(--muted);
 
       font-size:
-        0.76rem;
+        .7rem;
+
+      line-height:
+        1.5;
     }
+
 
     .footer-right {
       text-align:
         right;
     }
 
+
     kbd {
       font-size:
-        0.68rem;
+        .63rem;
 
       padding:
-        2px 6px;
+        2px 5px;
 
       border:
         1px solid
         var(--line);
 
       border-radius:
-        5px;
+        4px;
 
       margin:
         0 2px;
     }
+
 
     /* =========================================================
        MODALS
@@ -812,7 +1773,7 @@
           0,
           0,
           0,
-          0.48
+          .46
         );
 
       display:
@@ -834,9 +1795,10 @@
         hidden;
 
       transition:
-        opacity 0.2s ease,
-        visibility 0.2s ease;
+        opacity .2s ease,
+        visibility .2s ease;
     }
+
 
     .modal.open {
       opacity:
@@ -845,6 +1807,7 @@
       visibility:
         visible;
     }
+
 
     .modal-box {
       width:
@@ -867,33 +1830,37 @@
         var(--line);
 
       border-radius:
-        20px;
+        12px;
 
       padding:
-        26px;
+        25px;
 
       box-shadow:
-        0 30px
-        80px
+        0 24px 65px
         rgba(
           0,
           0,
           0,
-          0.25
+          .2
         );
 
       transform:
-        translateY(14px);
+        translateY(
+          10px
+        );
 
       transition:
-        transform 0.2s ease;
+        transform .2s ease;
     }
 
-    .modal.open
-    .modal-box {
+
+    .modal.open .modal-box {
       transform:
-        translateY(0);
+        translateY(
+          0
+        );
     }
+
 
     .modal-header {
       display:
@@ -905,17 +1872,82 @@
       justify-content:
         space-between;
 
+      gap:
+        15px;
+
       margin-bottom:
-        25px;
+        24px;
     }
+
 
     .modal-header h3 {
       font-size:
-        1.15rem;
+        1.06rem;
+
+      font-weight:
+        700;
     }
 
+
+    .modal-close {
+      appearance:
+        none;
+
+      width:
+        32px;
+
+      height:
+        32px;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      border:
+        1px solid
+        var(--line);
+
+      background:
+        transparent;
+
+      color:
+        var(--secondary);
+
+      border-radius:
+        7px;
+
+      cursor:
+        pointer;
+
+      font-size:
+        1rem;
+
+      line-height:
+        1;
+
+      transition:
+        background .18s ease,
+        color .18s ease,
+        border-color .18s ease;
+    }
+
+
+    .modal-close:hover {
+      background:
+        var(--fact-bg);
+
+      color:
+        var(--text);
+
+      border-color:
+        var(--accent);
+    }
+
+
     /* =========================================================
-       THEMES
+       THEME LIST
     ========================================================== */
 
     .theme-list {
@@ -929,16 +1961,16 @@
         );
 
       gap:
-        9px;
+        8px;
     }
+
 
     .theme {
       padding:
-        14px
-        10px;
+        12px 10px;
 
       border-radius:
-        11px;
+        8px;
 
       cursor:
         pointer;
@@ -954,37 +1986,44 @@
         var(--text);
 
       font-size:
-        0.8rem;
+        .76rem;
 
       transition:
-        border-color 0.2s ease,
-        transform 0.2s ease;
+        border-color .18s ease,
+        background .18s ease;
     }
 
+
     .theme:hover {
-      transform:
-        translateY(-2px);
+      background:
+        var(--fact-bg);
     }
+
 
     .theme.selected {
       border:
         2px solid
         var(--accent);
+
+      padding:
+        11px 9px;
     }
+
 
     .theme-color {
       display:
         block;
 
       height:
-        25px;
+        24px;
 
       border-radius:
-        7px;
+        5px;
 
       margin-bottom:
         7px;
     }
+
 
     .theme[data-theme-choice="light"]
     .theme-color {
@@ -996,6 +2035,7 @@
         );
     }
 
+
     .theme[data-theme-choice="dark"]
     .theme-color {
       background:
@@ -1005,6 +2045,7 @@
           #e99b4b
         );
     }
+
 
     .theme[data-theme-choice="desert"]
     .theme-color {
@@ -1016,6 +2057,7 @@
         );
     }
 
+
     .theme[data-theme-choice="ocean"]
     .theme-color {
       background:
@@ -1025,6 +2067,7 @@
           #197a98
         );
     }
+
 
     .theme[data-theme-choice="forest"]
     .theme-color {
@@ -1036,6 +2079,7 @@
         );
     }
 
+
     .theme[data-theme-choice="sunset"]
     .theme-color {
       background:
@@ -1045,6 +2089,7 @@
           #bd5362
         );
     }
+
 
     .theme[data-theme-choice="lavender"]
     .theme-color {
@@ -1056,6 +2101,7 @@
         );
     }
 
+
     .theme[data-theme-choice="amoled"]
     .theme-color {
       background:
@@ -1065,6 +2111,7 @@
           #5ca9ff
         );
     }
+
 
     /* =========================================================
        SETTINGS
@@ -1080,6 +2127,9 @@
       justify-content:
         space-between;
 
+      gap:
+        20px;
+
       padding:
         16px 0;
 
@@ -1088,15 +2138,21 @@
         var(--line);
     }
 
+
     .setting:first-of-type {
       margin-top:
-        24px;
+        23px;
     }
+
 
     .setting-title {
       font-weight:
         650;
+
+      font-size:
+        .85rem;
     }
+
 
     .setting-description {
       margin-top:
@@ -1106,24 +2162,33 @@
         var(--muted);
 
       font-size:
-        0.76rem;
+        .74rem;
+
+      line-height:
+        1.5;
     }
+
 
     .switch {
       position:
         relative;
 
       width:
-        43px;
+        42px;
 
       height:
-        24px;
+        23px;
+
+      flex-shrink:
+        0;
     }
+
 
     .switch input {
       display:
         none;
     }
+
 
     .slider {
       position:
@@ -1142,8 +2207,9 @@
         pointer;
 
       transition:
-        background 0.2s ease;
+        background .18s ease;
     }
+
 
     .slider::before {
       content:
@@ -1153,10 +2219,10 @@
         absolute;
 
       width:
-        18px;
+        17px;
 
       height:
-        18px;
+        17px;
 
       top:
         3px;
@@ -1176,26 +2242,29 @@
           0,
           0,
           0,
-          0.18
+          .18
         );
 
       transition:
-        transform 0.2s ease;
+        transform .18s ease;
     }
 
-    .switch
-    input:checked
+
+    .switch input:checked
     + .slider {
       background:
         var(--accent);
     }
 
-    .switch
-    input:checked
+
+    .switch input:checked
     + .slider::before {
       transform:
-        translateX(19px);
+        translateX(
+          19px
+        );
     }
+
 
     /* =========================================================
        HISTORY
@@ -1206,12 +2275,13 @@
         grid;
 
       gap:
-        10px;
+        8px;
     }
+
 
     .history-item {
       padding:
-        14px 15px;
+        13px 14px;
 
       background:
         var(--fact-bg);
@@ -1221,7 +2291,7 @@
         var(--line);
 
       border-radius:
-        11px;
+        8px;
 
       text-align:
         left;
@@ -1236,13 +2306,16 @@
         100%;
 
       transition:
-        border-color 0.2s ease;
+        border-color .18s ease,
+        background .18s ease;
     }
+
 
     .history-item:hover {
       border-color:
         var(--accent);
     }
+
 
     .history-item strong {
       display:
@@ -1253,28 +2326,33 @@
         serif;
 
       font-size:
-        0.97rem;
+        .94rem;
 
       line-height:
         1.45;
+
+      font-weight:
+        500;
     }
+
 
     .history-item span {
       display:
         block;
 
       margin-top:
-        7px;
+        6px;
 
       color:
         var(--muted);
 
       font-size:
-        0.76rem;
+        .74rem;
 
       line-height:
         1.5;
     }
+
 
     .empty {
       text-align:
@@ -1284,8 +2362,9 @@
         var(--muted);
 
       padding:
-        30px 5px;
+        28px 5px;
     }
+
 
     /* =========================================================
        TOAST
@@ -1299,7 +2378,7 @@
         50%;
 
       bottom:
-        25px;
+        23px;
 
       transform:
         translate(
@@ -1314,13 +2393,13 @@
         var(--paper);
 
       padding:
-        10px 15px;
+        9px 13px;
 
       border-radius:
-        9px;
+        7px;
 
       font-size:
-        0.8rem;
+        .76rem;
 
       opacity:
         0;
@@ -1329,12 +2408,13 @@
         none;
 
       transition:
-        opacity 0.2s ease,
-        transform 0.2s ease;
+        opacity .2s ease,
+        transform .2s ease;
 
       z-index:
         20;
     }
+
 
     .toast.visible {
       opacity:
@@ -1347,6 +2427,7 @@
         );
     }
 
+
     /* =========================================================
        RESPONSIVE
     ========================================================== */
@@ -1355,43 +2436,48 @@
 
       body {
         padding:
-          12px;
+          10px;
       }
+
 
       .paper {
         padding:
-          25px
-          21px
-          22px;
+          25px 21px 22px;
 
         border-radius:
-          18px;
+          12px;
       }
+
 
       header {
-        flex-direction:
-          column;
+        align-items:
+          flex-start;
       }
 
+
       .header-actions {
-        align-self:
-          flex-end;
+        gap:
+          13px;
       }
+
 
       .intro {
         padding-top:
-          28px;
+          29px;
       }
+
 
       .actions {
         flex-wrap:
           wrap;
       }
 
+
       .primary {
         min-width:
           100%;
       }
+
 
       footer {
         flex-direction:
@@ -1401,10 +2487,12 @@
           flex-start;
       }
 
+
       .footer-right {
         text-align:
           left;
       }
+
 
       .theme-list {
         grid-template-columns:
@@ -1413,16 +2501,80 @@
             1fr
           );
       }
+
+
+      .loading-animation {
+        width:
+          145px;
+
+        height:
+          145px;
+      }
+
+
+      .loading-animation::before {
+        width:
+          120px;
+
+        height:
+          120px;
+      }
+
+
+      .loading-animation .orb {
+        width:
+          128px;
+
+        height:
+          128px;
+      }
+
     }
 
+
+    @media (max-width: 450px) {
+
+      .header-actions {
+        flex-direction:
+          column;
+
+        align-items:
+          flex-end;
+
+        gap:
+          5px;
+      }
+
+
+      .brand h1 {
+        font-size:
+          1.25rem;
+      }
+
+
+      .brand p {
+        max-width:
+          180px;
+      }
+
+    }
+
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================== */
+
     @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior:
+          auto;
+      }
+
 
       *,
       *::before,
       *::after {
-        scroll-behavior:
-          auto !important;
-
         animation-duration:
           0.01ms !important;
 
@@ -1433,6 +2585,16 @@
           0.01ms !important;
       }
 
+
+      .goo-arm,
+      .goo-core,
+      .orb-arm,
+      .orb-bead,
+      .loading-animation::before {
+        animation:
+          none !important;
+      }
+
     }
 
   </style>
@@ -1440,6 +2602,28 @@
 
 
 <body>
+
+  <!-- =========================================================
+       CUSTOM CURSOR
+  ========================================================== -->
+
+  <div
+    class="custom-cursor"
+    id="customCursor"
+    aria-hidden="true"
+  ></div>
+
+
+  <div
+    class="custom-cursor-ring"
+    id="customCursorRing"
+    aria-hidden="true"
+  ></div>
+
+
+  <!-- =========================================================
+       APP
+  ========================================================== -->
 
   <main class="app">
 
@@ -1453,15 +2637,157 @@
 
         <div class="brand">
 
-          <div class="logo">
-            ✦
+          <div
+            class="brand-mark"
+            aria-hidden="true"
+          >
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="goo"
+              viewBox="0 0 64 64"
+              width="40"
+              height="40"
+              fill="none"
+            >
+
+              <defs>
+
+                <filter
+                  id="goo-weld-logo"
+                  x="-30%"
+                  y="-30%"
+                  width="160%"
+                  height="160%"
+                >
+
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    stdDeviation="2.6"
+                    result="soft"
+                  />
+
+                  <feColorMatrix
+                    in="soft"
+                    type="matrix"
+                    values="
+                      1 0 0 0 0
+                      0 1 0 0 0
+                      0 0 1 0 0
+                      0 0 0 19 -8
+                    "
+                  />
+
+                </filter>
+
+              </defs>
+
+
+              <circle
+                class="goo-bound"
+                cx="32"
+                cy="32"
+                r="30"
+              />
+
+
+              <g
+                filter="url(#goo-weld-logo)"
+                fill="currentColor"
+              >
+
+                <circle
+                  class="goo-core"
+                  cx="32"
+                  cy="32"
+                  r="9.5"
+                />
+
+
+                <g
+                  class="goo-arm"
+                  style="
+                    --dur:2.8s;
+                    --dir:1;
+                    --rest:20deg
+                  "
+                >
+
+                  <circle
+                    cx="32"
+                    cy="21"
+                    r="7"
+                  />
+
+                </g>
+
+
+                <g
+                  class="goo-arm"
+                  style="
+                    --dur:3.6s;
+                    --dir:-1;
+                    --rest:140deg
+                  "
+                >
+
+                  <circle
+                    cx="32"
+                    cy="17.5"
+                    r="5.5"
+                  />
+
+                </g>
+
+
+                <g
+                  class="goo-arm"
+                  style="
+                    --dur:2.2s;
+                    --dir:1;
+                    --rest:255deg
+                  "
+                >
+
+                  <circle
+                    cx="32"
+                    cy="23"
+                    r="4.6"
+                  />
+
+                </g>
+
+
+                <g
+                  class="goo-arm"
+                  style="
+                    --dur:4.4s;
+                    --dir:-1;
+                    --rest:310deg
+                  "
+                >
+
+                  <circle
+                    cx="32"
+                    cy="16"
+                    r="4"
+                  />
+
+                </g>
+
+              </g>
+
+            </svg>
+
           </div>
+
 
           <div>
 
             <h1>
               Daily Boost
             </h1>
+
 
             <p>
               A little something good for today.
@@ -1475,21 +2801,20 @@
         <div class="header-actions">
 
           <button
-            class="small-button"
+            class="header-link"
             id="historyBtn"
-            title="History"
-            aria-label="Open history"
+            type="button"
           >
-            ↺
+            History
           </button>
 
+
           <button
-            class="small-button"
+            class="header-link"
             id="settingsBtn"
-            title="Settings"
-            aria-label="Open settings"
+            type="button"
           >
-            ⚙
+            Settings
           </button>
 
         </div>
@@ -1507,10 +2832,12 @@
           today's little reminder
         </div>
 
+
         <h2>
           You don't need a perfect day
           to have a good one.
         </h2>
+
 
         <p>
           Take a second. Read something nice.
@@ -1528,41 +2855,52 @@
 
         <button
           class="filter active"
+          type="button"
           data-category="all"
         >
           All
         </button>
 
+
         <button
           class="filter"
+          type="button"
           data-category="confidence"
         >
           Confidence
         </button>
 
+
         <button
           class="filter"
+          type="button"
           data-category="growth"
         >
           Growth
         </button>
 
+
         <button
           class="filter"
+          type="button"
           data-category="calm"
         >
           Calm
         </button>
 
+
         <button
           class="filter"
+          type="button"
           data-category="motivation"
         >
           Motivation
         </button>
 
+
         <button
           class="filter"
+          type="button"
           data-category="self-love"
         >
           Self love
@@ -1578,39 +2916,195 @@
       <div
         class="content"
         id="content"
+        aria-busy="false"
       >
 
-        <div class="section-label">
-          affirmation
-        </div>
+        <!-- ===================================================
+             NORMAL CONTENT VIEW
+        ==================================================== -->
 
         <div
-          class="affirmation"
-          id="affirmation"
-          aria-live="polite"
+          class="content-view"
+          id="contentView"
         >
-          You are capable of amazing things.
+
+          <div class="section-label">
+            affirmation
+          </div>
+
+
+          <div
+            class="affirmation"
+            id="affirmation"
+            aria-live="polite"
+          >
+            You are capable of amazing things.
+          </div>
+
+
+          <div
+            class="affirmation-category"
+            id="affirmationCategory"
+          >
+            confidence
+          </div>
+
+
+          <div class="rule"></div>
+
+
+          <div class="section-label">
+            something interesting
+          </div>
+
+
+          <div
+            class="fact"
+            id="fact"
+            aria-live="polite"
+          >
+            Loading something interesting...
+          </div>
+
         </div>
+
+
+        <!-- ===================================================
+             LOADING VIEW
+        ==================================================== -->
 
         <div
-          class="affirmation-category"
-          id="affirmationCategory"
+          class="loading-view"
+          id="loadingView"
+          aria-hidden="true"
         >
-          confidence
-        </div>
 
-        <div class="rule"></div>
+          <div class="loading-animation">
 
-        <div class="section-label">
-          something interesting
-        </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="orb"
+              viewBox="0 0 64 64"
+              width="96"
+              height="96"
+              fill="none"
+              role="img"
+              aria-label="Loading"
+            >
 
-        <div
-          class="fact"
-          id="fact"
-          aria-live="polite"
-        >
-          Loading something interesting...
+              <g
+                class="orb-plane"
+                style="
+                  --tilt:-26deg;
+                  --k:0.3;
+                  --inv:3.3333;
+                  --dur:2.6s;
+                  --dir:1;
+                  --rest:34deg
+                "
+              >
+
+                <circle
+                  class="orb-track"
+                  cx="32"
+                  cy="32"
+                  r="20"
+                />
+
+
+                <g class="orb-arm">
+
+                  <circle
+                    class="orb-bead"
+                    cx="52"
+                    cy="32"
+                    r="2.5"
+                  />
+
+                </g>
+
+              </g>
+
+
+              <g
+                class="orb-plane"
+                style="
+                  --tilt:34deg;
+                  --k:0.38;
+                  --inv:2.6316;
+                  --dur:3.4s;
+                  --dir:-1;
+                  --rest:158deg
+                "
+              >
+
+                <circle
+                  class="orb-track"
+                  cx="32"
+                  cy="32"
+                  r="16"
+                />
+
+
+                <g class="orb-arm">
+
+                  <circle
+                    class="orb-bead"
+                    cx="48"
+                    cy="32"
+                    r="2.5"
+                  />
+
+                </g>
+
+              </g>
+
+
+              <g
+                class="orb-plane"
+                style="
+                  --tilt:86deg;
+                  --k:0.26;
+                  --inv:3.8462;
+                  --dur:4.2s;
+                  --dir:1;
+                  --rest:262deg
+                "
+              >
+
+                <circle
+                  class="orb-track"
+                  cx="32"
+                  cy="32"
+                  r="22"
+                />
+
+
+                <g class="orb-arm">
+
+                  <circle
+                    class="orb-bead"
+                    cx="54"
+                    cy="32"
+                    r="2.5"
+                  />
+
+                </g>
+
+              </g>
+
+
+              <circle
+                class="orb-core"
+                cx="32"
+                cy="32"
+                r="1.6"
+              />
+
+            </svg>
+
+          </div>
+
         </div>
 
       </div>
@@ -1625,20 +3119,25 @@
         <button
           class="primary"
           id="refreshBtn"
+          type="button"
         >
           New one
         </button>
 
+
         <button
           class="secondary-button"
           id="copyBtn"
+          type="button"
         >
           Copy
         </button>
 
+
         <button
           class="secondary-button"
           id="shareBtn"
+          type="button"
         >
           Share
         </button>
@@ -1655,6 +3154,7 @@
         <div>
           Made for the days when you need a tiny reset.
         </div>
+
 
         <div class="footer-right">
 
@@ -1683,17 +3183,24 @@
     aria-hidden="true"
   >
 
-    <div class="modal-box">
+    <div
+      class="modal-box"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="settingsTitle"
+    >
 
       <div class="modal-header">
 
-        <h3>
+        <h3 id="settingsTitle">
           Appearance & settings
         </h3>
 
+
         <button
-          class="small-button"
+          class="modal-close"
           data-close
+          type="button"
           aria-label="Close settings"
         >
           ×
@@ -1712,62 +3219,77 @@
         <button
           class="theme selected"
           data-theme-choice="light"
+          type="button"
         >
           <span class="theme-color"></span>
           Light
         </button>
 
+
         <button
           class="theme"
           data-theme-choice="dark"
+          type="button"
         >
           <span class="theme-color"></span>
           Dark
         </button>
 
+
         <button
           class="theme"
           data-theme-choice="desert"
+          type="button"
         >
           <span class="theme-color"></span>
           Desert
         </button>
 
+
         <button
           class="theme"
           data-theme-choice="ocean"
+          type="button"
         >
           <span class="theme-color"></span>
           Ocean
         </button>
 
+
         <button
           class="theme"
           data-theme-choice="forest"
+          type="button"
         >
           <span class="theme-color"></span>
           Forest
         </button>
 
+
         <button
           class="theme"
           data-theme-choice="sunset"
+          type="button"
         >
           <span class="theme-color"></span>
           Sunset
         </button>
 
+
         <button
           class="theme"
           data-theme-choice="lavender"
+          type="button"
         >
           <span class="theme-color"></span>
           Lavender
         </button>
 
+
         <button
           class="theme"
           data-theme-choice="amoled"
+          type="button"
         >
           <span class="theme-color"></span>
           AMOLED
@@ -1784,11 +3306,13 @@
             Automatic refresh
           </div>
 
+
           <div class="setting-description">
             Show a new combination every 30 seconds.
           </div>
 
         </div>
+
 
         <label class="switch">
 
@@ -1796,6 +3320,7 @@
             type="checkbox"
             id="autoGenerate"
           >
+
 
           <span class="slider"></span>
 
@@ -1812,11 +3337,13 @@
             Animations
           </div>
 
+
           <div class="setting-description">
             Keep the small transition when changing content.
           </div>
 
         </div>
+
 
         <label class="switch">
 
@@ -1825,6 +3352,7 @@
             id="animations"
             checked
           >
+
 
           <span class="slider"></span>
 
@@ -1841,11 +3369,13 @@
             Haptic feedback
           </div>
 
+
           <div class="setting-description">
             Tiny vibration on supported devices.
           </div>
 
         </div>
+
 
         <label class="switch">
 
@@ -1854,6 +3384,7 @@
             id="haptic"
             checked
           >
+
 
           <span class="slider"></span>
 
@@ -1876,17 +3407,24 @@
     aria-hidden="true"
   >
 
-    <div class="modal-box">
+    <div
+      class="modal-box"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="historyTitle"
+    >
 
       <div class="modal-header">
 
-        <h3>
+        <h3 id="historyTitle">
           Your history
         </h3>
 
+
         <button
-          class="small-button"
+          class="modal-close"
           data-close
+          type="button"
           aria-label="Close history"
         >
           ×
@@ -1928,139 +3466,178 @@
       {
         text:
           "You are enough, even while you're still figuring things out.",
+
         category:
           "self-love"
       },
+
 
       {
         text:
           "You can learn things that once felt completely out of reach.",
+
         category:
           "growth"
       },
+
 
       {
         text:
           "You don't have to solve your whole life today.",
+
         category:
           "calm"
       },
+
 
       {
         text:
           "The small things you do consistently matter more than the occasional burst of motivation.",
+
         category:
           "motivation"
       },
+
 
       {
         text:
           "Confidence grows when you keep the promises you make to yourself.",
+
         category:
           "confidence"
       },
+
 
       {
         text:
           "It's okay to start over without calling it a failure.",
+
         category:
           "growth"
       },
+
 
       {
         text:
           "Some progress is quiet. That doesn't make it less real.",
+
         category:
           "motivation"
       },
+
 
       {
         text:
           "You are allowed to be proud of how far you've come.",
+
         category:
           "self-love"
       },
+
 
       {
         text:
           "A mistake is something you made, not everything you are.",
+
         category:
           "growth"
       },
+
 
       {
         text:
           "You don't need to rush just because everyone else looks busy.",
+
         category:
           "calm"
       },
+
 
       {
         text:
           "You have survived every difficult day you've had so far.",
+
         category:
           "motivation"
       },
+
 
       {
         text:
           "Your voice is worth hearing.",
+
         category:
           "confidence"
       },
+
 
       {
         text:
           "You can be a work in progress and still be proud of yourself.",
+
         category:
           "self-love"
       },
+
 
       {
         text:
           "You don't need permission to take yourself seriously.",
+
         category:
           "confidence"
       },
 
+
       {
         text:
           "A slower day isn't automatically a wasted day.",
+
         category:
           "calm"
       },
 
+
       {
         text:
           "Your future is built from ordinary days like this one.",
+
         category:
           "motivation"
       },
 
+
       {
         text:
           "You are allowed to change your mind and choose a different path.",
+
         category:
           "growth"
       },
+
 
       {
         text:
           "You don't have to become someone else to become better.",
+
         category:
           "self-love"
       },
 
+
       {
         text:
           "Doing something badly at first is still doing something.",
+
         category:
           "growth"
       },
 
+
       {
         text:
           "You're probably further along than your worst day makes you think.",
+
         category:
           "motivation"
       }
@@ -2073,111 +3650,142 @@
       {
         text:
           "Octopuses have three hearts.",
+
         category:
           "animals"
       },
+
 
       {
         text:
           "A day on Venus is longer than a year on Venus.",
+
         category:
           "space"
       },
+
 
       {
         text:
           "Sharks existed before trees.",
+
         category:
           "nature"
       },
+
 
       {
         text:
           "The Moon experiences moonquakes.",
+
         category:
           "space"
       },
+
 
       {
         text:
           "Bananas are botanically berries, while strawberries aren't true berries.",
+
         category:
           "nature"
       },
+
 
       {
         text:
           "Some crows can remember individual human faces.",
+
         category:
           "animals"
       },
+
 
       {
         text:
           "The speed of light in vacuum is about 299,792 kilometers per second.",
+
         category:
           "science"
       },
+
 
       {
         text:
           "Saturn is less dense than water.",
+
         category:
           "space"
       },
+
 
       {
         text:
           "Your fingerprints form before birth and generally remain stable throughout your life.",
+
         category:
           "human"
       },
+
 
       {
         text:
           "Your stomach protects itself from its own acid using a specialized mucus barrier.",
+
         category:
           "human"
       },
+
 
       {
         text:
           "Some frogs can survive being partially frozen and recover after temperatures rise.",
+
         category:
           "animals"
       },
 
+
       {
         text:
           "A cloud can contain a surprisingly large amount of water while still appearing almost weightless.",
+
         category:
           "science"
       },
 
+
       {
         text:
           "The human brain uses a significant amount of the body's energy even while you're resting.",
+
         category:
           "human"
       },
 
+
       {
         text:
           "The Moon is slowly moving farther away from Earth.",
+
         category:
           "space"
       },
 
+
       {
         text:
           "Some trees exchange nutrients and chemical signals through underground fungal networks.",
+
         category:
           "nature"
       },
 
+
       {
         text:
           "Ancient Roman concrete has demonstrated remarkable durability in some marine environments.",
+
         category:
           "history"
       }
@@ -2190,7 +3798,7 @@
     ========================================================== */
 
     const STORAGE_KEY =
-      "daily_boost_v4";
+      "daily_boost_final_v1";
 
 
     const defaultState = {
@@ -2234,6 +3842,18 @@
       null;
 
 
+    let toastTimer =
+      null;
+
+
+    let generationTimer =
+      null;
+
+
+    let isGenerating =
+      false;
+
+
     /* =========================================================
        DOM
     ========================================================== */
@@ -2241,80 +3861,108 @@
     const body =
       document.body;
 
+
     const content =
       document.getElementById(
         "content"
       );
+
+
+    const contentView =
+      document.getElementById(
+        "contentView"
+      );
+
+
+    const loadingView =
+      document.getElementById(
+        "loadingView"
+      );
+
 
     const affirmationEl =
       document.getElementById(
         "affirmation"
       );
 
+
     const categoryEl =
       document.getElementById(
         "affirmationCategory"
       );
+
 
     const factEl =
       document.getElementById(
         "fact"
       );
 
+
     const historyBtn =
       document.getElementById(
         "historyBtn"
       );
+
 
     const settingsBtn =
       document.getElementById(
         "settingsBtn"
       );
 
+
     const refreshBtn =
       document.getElementById(
         "refreshBtn"
       );
+
 
     const copyBtn =
       document.getElementById(
         "copyBtn"
       );
 
+
     const shareBtn =
       document.getElementById(
         "shareBtn"
       );
+
 
     const settingsModal =
       document.getElementById(
         "settingsModal"
       );
 
+
     const historyModal =
       document.getElementById(
         "historyModal"
       );
+
 
     const historyEl =
       document.getElementById(
         "history"
       );
 
+
     const toastEl =
       document.getElementById(
         "toast"
       );
+
 
     const autoGenerateInput =
       document.getElementById(
         "autoGenerate"
       );
 
+
     const animationsInput =
       document.getElementById(
         "animations"
       );
+
 
     const hapticInput =
       document.getElementById(
@@ -2323,7 +3971,7 @@
 
 
     /* =========================================================
-       LOAD / SAVE
+       LOAD STATE
     ========================================================== */
 
     function loadState() {
@@ -2335,18 +3983,21 @@
             STORAGE_KEY
           );
 
+
         if (!saved) {
 
-          return {
-            ...structuredClone(
-              defaultState
-            )
-          };
+          return structuredClone(
+            defaultState
+          );
 
         }
 
+
         const parsed =
-          JSON.parse(saved);
+          JSON.parse(
+            saved
+          );
+
 
         return {
 
@@ -2375,6 +4026,7 @@
           error
         );
 
+
         return structuredClone(
           defaultState
         );
@@ -2383,6 +4035,10 @@
 
     }
 
+
+    /* =========================================================
+       SAVE STATE
+    ========================================================== */
 
     function saveState() {
 
@@ -2450,9 +4106,51 @@
         "vibrate" in navigator
       ) {
 
-        navigator.vibrate(8);
+        navigator.vibrate(
+          8
+        );
 
       }
+
+    }
+
+
+    function setButtonsDisabled(
+      disabled
+    ) {
+
+      refreshBtn.disabled =
+        disabled;
+
+
+      copyBtn.disabled =
+        disabled;
+
+
+      shareBtn.disabled =
+        disabled;
+
+
+      historyBtn.disabled =
+        disabled;
+
+
+      settingsBtn.disabled =
+        disabled;
+
+
+      document
+        .querySelectorAll(
+          ".filter"
+        )
+        .forEach(
+          button => {
+
+            button.disabled =
+              disabled;
+
+          }
+        );
 
     }
 
@@ -2468,8 +4166,10 @@
       state.theme =
         theme;
 
+
       if (
-        theme === "light"
+        theme ===
+        "light"
       ) {
 
         body.removeAttribute(
@@ -2484,6 +4184,7 @@
         );
 
       }
+
 
       document
         .querySelectorAll(
@@ -2501,7 +4202,85 @@
           }
         );
 
+
       saveState();
+
+    }
+
+
+    /* =========================================================
+       LOADING STATE
+    ========================================================== */
+
+    function showLoading() {
+
+      /*
+        Keep the content in the DOM but completely
+        hide it while the Orb is displayed.
+      */
+
+      contentView.style.opacity =
+        "0";
+
+
+      contentView.style.visibility =
+        "hidden";
+
+
+      loadingView.classList.add(
+        "active"
+      );
+
+
+      loadingView.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+
+      content.setAttribute(
+        "aria-busy",
+        "true"
+      );
+
+
+      setButtonsDisabled(
+        true
+      );
+
+    }
+
+
+    function hideLoading() {
+
+      loadingView.classList.remove(
+        "active"
+      );
+
+
+      loadingView.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+
+      contentView.style.opacity =
+        "";
+
+
+      contentView.style.visibility =
+        "";
+
+
+      content.setAttribute(
+        "aria-busy",
+        "false"
+      );
+
+
+      setButtonsDisabled(
+        false
+      );
 
     }
 
@@ -2512,146 +4291,210 @@
 
     function generate() {
 
-      let affirmationPool =
-        affirmations;
-
-
       if (
-        state.category !==
-        "all"
+        isGenerating
       ) {
 
-        affirmationPool =
-          affirmations.filter(
-            item =>
-              item.category ===
-              state.category
-          );
+        return;
 
       }
 
 
-      if (
-        !affirmationPool.length
-      ) {
-
-        affirmationPool =
-          affirmations;
-
-      }
+      isGenerating =
+        true;
 
 
-      let affirmation =
-        randomItem(
-          affirmationPool
-        );
-
-
-      /*
-        Avoid an immediate duplicate.
-      */
-
-      if (
-        state.current &&
-        affirmationPool.length > 1
-      ) {
-
-        let attempts = 0;
-
-        while (
-          affirmation.text ===
-            state.current
-              .affirmation
-              .text &&
-          attempts < 10
-        ) {
-
-          affirmation =
-            randomItem(
-              affirmationPool
-            );
-
-          attempts++;
-
-        }
-
-      }
-
-
-      let fact =
-        randomItem(
-          facts
-        );
-
-
-      if (
-        state.current &&
-        facts.length > 1
-      ) {
-
-        let attempts = 0;
-
-        while (
-          fact.text ===
-            state.current
-              .fact
-              .text &&
-          attempts < 10
-        ) {
-
-          fact =
-            randomItem(
-              facts
-            );
-
-          attempts++;
-
-        }
-
-      }
-
-
-      const entry = {
-
-        id:
-          `${Date.now()}-${Math.random()
-            .toString(16)
-            .slice(2)}`,
-
-        affirmation,
-
-        fact,
-
-        createdAt:
-          Date.now()
-
-      };
-
-
-      state.current =
-        entry;
-
-      state.generated +=
-        1;
-
-
-      state.history.unshift(
-        entry
+      clearTimeout(
+        generationTimer
       );
 
 
-      state.history =
-        state.history.slice(
-          0,
-          30
+      showLoading();
+
+
+      /*
+        The Orb stays visible for one full second.
+      */
+
+      generationTimer =
+        window.setTimeout(
+          () => {
+
+            let affirmationPool =
+              affirmations;
+
+
+            if (
+              state.category !==
+              "all"
+            ) {
+
+              affirmationPool =
+                affirmations.filter(
+                  item =>
+                    item.category ===
+                    state.category
+                );
+
+            }
+
+
+            if (
+              !affirmationPool.length
+            ) {
+
+              affirmationPool =
+                affirmations;
+
+            }
+
+
+            let affirmation =
+              randomItem(
+                affirmationPool
+              );
+
+
+            /*
+              Avoid an immediate duplicate.
+            */
+
+            if (
+              state.current &&
+              affirmationPool.length > 1
+            ) {
+
+              let attempts =
+                0;
+
+
+              while (
+                affirmation.text ===
+                  state.current
+                    .affirmation
+                    .text &&
+                attempts < 10
+              ) {
+
+                affirmation =
+                  randomItem(
+                    affirmationPool
+                  );
+
+
+                attempts++;
+
+              }
+
+            }
+
+
+            let fact =
+              randomItem(
+                facts
+              );
+
+
+            /*
+              Avoid an immediate duplicate.
+            */
+
+            if (
+              state.current &&
+              facts.length > 1
+            ) {
+
+              let attempts =
+                0;
+
+
+              while (
+                fact.text ===
+                  state.current
+                    .fact
+                    .text &&
+                attempts < 10
+              ) {
+
+                fact =
+                  randomItem(
+                    facts
+                  );
+
+
+                attempts++;
+
+              }
+
+            }
+
+
+            const entry = {
+
+              id:
+                `${Date.now()}-${Math.random()
+                  .toString(16)
+                  .slice(2)}`,
+
+              affirmation,
+
+              fact,
+
+              createdAt:
+                Date.now()
+
+            };
+
+
+            state.current =
+              entry;
+
+
+            state.generated +=
+              1;
+
+
+            state.history.unshift(
+              entry
+            );
+
+
+            state.history =
+              state.history.slice(
+                0,
+                30
+              );
+
+
+            saveState();
+
+
+            /*
+              Update the existing elements.
+              No new text nodes are added to
+              the content view.
+            */
+
+            render();
+
+
+            /*
+              Reveal the newly updated content.
+            */
+
+            hideLoading();
+
+
+            isGenerating =
+              false;
+
+
+            vibrate();
+
+          },
+
+          1000
         );
-
-
-      saveState();
-
-      render();
-
-      vibrate();
 
     }
 
@@ -2671,23 +4514,6 @@
       }
 
 
-      if (
-        state.settings.animations
-      ) {
-
-        content.classList.remove(
-          "swap"
-        );
-
-        void content.offsetWidth;
-
-        content.classList.add(
-          "swap"
-        );
-
-      }
-
-
       affirmationEl.textContent =
         state.current
           .affirmation
@@ -2702,8 +4528,7 @@
         );
 
 
-      factEl.innerHTML =
-        "";
+      factEl.replaceChildren();
 
 
       const strong =
@@ -2728,6 +4553,25 @@
             .text
         )
       );
+
+
+      if (
+        state.settings.animations
+      ) {
+
+        contentView.classList.remove(
+          "swap"
+        );
+
+
+        void contentView.offsetWidth;
+
+
+        contentView.classList.add(
+          "swap"
+        );
+
+      }
 
     }
 
@@ -2772,6 +4616,15 @@
 
     async function copyCurrent() {
 
+      if (
+        isGenerating
+      ) {
+
+        return;
+
+      }
+
+
       const text =
         getShareText();
 
@@ -2788,6 +4641,7 @@
         await navigator.clipboard.writeText(
           text
         );
+
 
         showToast(
           "Copied"
@@ -2847,6 +4701,15 @@
 
     async function shareCurrent() {
 
+      if (
+        isGenerating
+      ) {
+
+        return;
+
+      }
+
+
       const text =
         getShareText();
 
@@ -2877,6 +4740,7 @@
 
           vibrate();
 
+
           return;
 
         } catch (error) {
@@ -2897,6 +4761,7 @@
 
       await copyCurrent();
 
+
       showToast(
         "Sharing isn't available, so it was copied instead."
       );
@@ -2910,8 +4775,7 @@
 
     function renderHistory() {
 
-      historyEl.innerHTML =
-        "";
+      historyEl.replaceChildren();
 
 
       if (
@@ -2997,13 +4861,24 @@
             "click",
             () => {
 
+              if (
+                isGenerating
+              ) {
+
+                return;
+
+              }
+
+
               state.current =
                 entry;
 
 
               saveState();
 
+
               render();
+
 
               closeModal(
                 historyModal
@@ -3030,6 +4905,15 @@
     function openModal(
       modal
     ) {
+
+      if (
+        isGenerating
+      ) {
+
+        return;
+
+      }
+
 
       modal.classList.add(
         "open"
@@ -3081,10 +4965,6 @@
        TOAST
     ========================================================== */
 
-    let toastTimer =
-      null;
-
-
     function showToast(
       message
     ) {
@@ -3119,7 +4999,7 @@
 
 
     /* =========================================================
-       AUTO GENERATION
+       AUTO REFRESH
     ========================================================== */
 
     function updateAutoRefresh() {
@@ -3145,7 +5025,17 @@
 
       autoTimer =
         setInterval(
-          generate,
+          () => {
+
+            if (
+              !isGenerating
+            ) {
+
+              generate();
+
+            }
+
+          },
           30000
         );
 
@@ -3153,7 +5043,7 @@
 
 
     /* =========================================================
-       FILTER BUTTONS
+       FILTERS
     ========================================================== */
 
     document
@@ -3166,6 +5056,15 @@
           button.addEventListener(
             "click",
             () => {
+
+              if (
+                isGenerating
+              ) {
+
+                return;
+
+              }
+
 
               document
                 .querySelectorAll(
@@ -3193,6 +5092,7 @@
 
               saveState();
 
+
               generate();
 
             }
@@ -3203,7 +5103,7 @@
 
 
     /* =========================================================
-       THEME BUTTONS
+       THEMES
     ========================================================== */
 
     document
@@ -3218,8 +5118,7 @@
             () => {
 
               setTheme(
-                button.dataset
-                  .themeChoice
+                button.dataset.themeChoice
               );
 
 
@@ -3246,6 +5145,7 @@
 
 
         saveState();
+
 
         updateAutoRefresh();
 
@@ -3278,6 +5178,7 @@
 
 
         saveState();
+
 
         vibrate();
 
@@ -3312,6 +5213,7 @@
       () => {
 
         renderHistory();
+
 
         openModal(
           historyModal
@@ -3410,6 +5312,249 @@
 
 
     /* =========================================================
+       CUSTOM CURSOR
+    ========================================================== */
+
+    const customCursor =
+      document.getElementById(
+        "customCursor"
+      );
+
+
+    const customCursorRing =
+      document.getElementById(
+        "customCursorRing"
+      );
+
+
+    if (
+      customCursor &&
+      customCursorRing &&
+      window.matchMedia(
+        "(pointer: fine)"
+      ).matches
+    ) {
+
+      let cursorX =
+        window.innerWidth / 2;
+
+
+      let cursorY =
+        window.innerHeight / 2;
+
+
+      let ringX =
+        cursorX;
+
+
+      let ringY =
+        cursorY;
+
+
+      document.addEventListener(
+        "mousemove",
+        event => {
+
+          cursorX =
+            event.clientX;
+
+
+          cursorY =
+            event.clientY;
+
+
+          customCursor.style.left =
+            `${cursorX}px`;
+
+
+          customCursor.style.top =
+            `${cursorY}px`;
+
+
+          customCursor.style.opacity =
+            "0.9";
+
+
+          customCursorRing.style.opacity =
+            "0.28";
+
+        }
+      );
+
+
+      function animateCursorRing() {
+
+        ringX +=
+          (
+            cursorX -
+            ringX
+          ) *
+          0.18;
+
+
+        ringY +=
+          (
+            cursorY -
+            ringY
+          ) *
+          0.18;
+
+
+        customCursorRing.style.left =
+          `${ringX}px`;
+
+
+        customCursorRing.style.top =
+          `${ringY}px`;
+
+
+        requestAnimationFrame(
+          animateCursorRing
+        );
+
+      }
+
+
+      animateCursorRing();
+
+
+      document.addEventListener(
+        "mouseover",
+        event => {
+
+          const target =
+            event.target.closest(
+              "button, a, input, select, textarea, [role='button']"
+            );
+
+
+          if (!target) {
+
+            customCursor.classList.remove(
+              "is-hovering"
+            );
+
+
+            customCursorRing.classList.remove(
+              "is-hovering"
+            );
+
+
+            return;
+
+          }
+
+
+          customCursor.classList.add(
+            "is-hovering"
+          );
+
+
+          customCursorRing.classList.add(
+            "is-hovering"
+          );
+
+        }
+      );
+
+
+      document.addEventListener(
+        "mouseout",
+        event => {
+
+          const target =
+            event.target.closest(
+              "button, a, input, select, textarea, [role='button']"
+            );
+
+
+          if (!target) {
+
+            return;
+
+          }
+
+
+          customCursor.classList.remove(
+            "is-hovering"
+          );
+
+
+          customCursorRing.classList.remove(
+            "is-hovering"
+          );
+
+        }
+      );
+
+
+      document.addEventListener(
+        "mousedown",
+        () => {
+
+          customCursor.classList.add(
+            "is-clicking"
+          );
+
+
+          customCursorRing.classList.add(
+            "is-clicking"
+          );
+
+        }
+      );
+
+
+      document.addEventListener(
+        "mouseup",
+        () => {
+
+          customCursor.classList.remove(
+            "is-clicking"
+          );
+
+
+          customCursorRing.classList.remove(
+            "is-clicking"
+          );
+
+        }
+      );
+
+
+      document.addEventListener(
+        "mouseleave",
+        () => {
+
+          customCursor.style.opacity =
+            "0";
+
+
+          customCursorRing.style.opacity =
+            "0";
+
+        }
+      );
+
+
+      document.addEventListener(
+        "mouseenter",
+        () => {
+
+          customCursor.style.opacity =
+            "0.9";
+
+
+          customCursorRing.style.opacity =
+            "0.28";
+
+        }
+      );
+
+    }
+
+
+    /* =========================================================
        KEYBOARD SHORTCUTS
     ========================================================== */
 
@@ -3431,7 +5576,9 @@
             "SELECT";
 
 
-        if (isTyping) {
+        if (
+          isTyping
+        ) {
 
           return;
 
@@ -3449,7 +5596,9 @@
 
           event.preventDefault();
 
+
           generate();
+
 
           return;
 
@@ -3466,6 +5615,7 @@
         ) {
 
           copyCurrent();
+
 
           return;
 
@@ -3484,6 +5634,7 @@
           closeModal(
             settingsModal
           );
+
 
           closeModal(
             historyModal
